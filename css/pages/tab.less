@@ -1,0 +1,48 @@
+
+@import (less) "../base/colors.less";
+@import (less) "markdown.less";
+@import (less) "wikiTemplate.less";
+
+#tab {
+        
+        #wikiTemplate();
+        #markdown();
+
+        .ui.tab {
+                
+                .nav {
+                        .item {
+                                display: inline-block;
+                                transition: all .3s linear;
+                                padding: 5px 32px;
+                                cursor: pointer;
+                                border-bottom: 3px solid #ddd;
+                                margin-left: -3px;
+                                font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+                                font-size: 18px;
+                                text-shadow: 0 0 40px #CCC;
+                                overflow: hidden;
+                        }
+
+                        .indicator {
+                        
+                                position: absolute;
+                                border-bottom: 3px solid @dribbble;
+                                display: inline-block;
+                                z-index: 0;
+                                margin-left: -3px;
+                        }
+                }
+
+                .content .item {
+                        display: none;
+                        border: 0;
+                        margin-bottom: 0;
+                        padding: 10px 8px 5px;
+
+                        &.selected {
+                                display: block;
+                        }
+                }
+        }
+}

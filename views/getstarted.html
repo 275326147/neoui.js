@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="/css/pages/getstarted.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="deploy" class="item active">Deploy</li>
+    <li data-anchor="contribute" class="item">Contribute</li>
+    <li data-anchor="build" class="item">Build</li>
+    <li data-anchor="joinUs" class="item">Join Us</li>
+    <li class="item">Develop
+        <ul>
+            <li data-anchor="style" class="item">Less/CSS</li>
+            <li data-anchor="javascript" class="item">Javascript</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="getstarted" class="markdown">
+
+    <header data-anchor="deploy">Deploy</header>
+
+    <section>
+        <p>如果你网络慢或者服务器慢或者没有网络或者作为开发者用于调试, 你可以通过下面内容, 简单的部署项目到本地</p>
+
+        <blockquote>
+            <p>安装<code>NodeJs</code>
+                <p>
+        </blockquote>
+        <p><code>Build</code>部分使用<code>GruntJs</code>, 所以你懂的</p>
+        <br>
+
+        <blockquote>
+            <p>安装<code>python</code>(可选)
+                <p>
+        </blockquote>
+        <p>使用<code>python</code><code>SimpleHTTPServer</code>做为<code>HTTP</code>服务器, 当然你也可以用<code>nginx</code>等<code>HTTP</code>服务器</p>
+        <br>
+
+        <blockquote>
+            <p>获取代码
+                <p>
+        </blockquote>
+        <p>打开项目托管主页 <a href="https://github.com/trazyn/neoui.js">neoscm.js</a> 点击<code>Download</code>下载项目到本地</p>
+        <p>或者<code>git clone https://github.com/trazyn/neoui.js.git</code>克隆代码到本地</p>
+        <br>
+
+        <blockquote>
+            <p>安装依赖
+                <p>
+        </blockquote>
+        <p><code>$ cd neoui.js/</code>
+        </p>
+        <p><code>$ npm install</code>
+        </p>
+        <br>
+
+        <blockquote>
+            <p>启动服务器
+                <p>
+        </blockquote>
+        <p>安装<code>python</code>后, 在项目根目录执行</p>
+        <p><code>$ python -m SimpleHTTPServer</code>
+        </p>
+        <br>
+
+        <blockquote>
+            <p>跨域设置
+                <p>
+        </blockquote>
+        <p>因为部分数据涉及到<code>dev</code>环境服务调用, 所以需要开启浏览器的跨域, 修改浏览器目标参数</p>
+        <p><code>"C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security</code>
+        </p>
+    </section>
+
+    <br>
+    <br>
+
+    <header data-anchor="contribute">Contribute</header>
+
+    <section>
+        <blockquote>
+            <p>安装<code>git</code>
+                <p>
+        </blockquote>
+        <p>Linux/OSX 系统标配, Windows 系统点下一步进行安装就好</p>
+        <br>
+
+        <blockquote>
+            <p><code>Fork</code>我们的项目
+                <p>
+        </blockquote>
+        <p><a href="https://github.com/trazyn/neoui.js">Fork Me On Github</a>, 创建本地副本(<a href="//www.git-scm.com">What is Git?</a>)</p>
+        <br>
+
+        <blockquote>
+            <p>创建<code>Merge Request</code>
+                <p>
+        </blockquote>
+        <p><code>Balalalalalala...</code>修改完代码后创建<code>Merge Request</code>到主仓库(请提交至<code>dev</code>分支, <code>master</code>不接受外部<code>Meger Request</code>)</p>
+        <br>
+
+        <blockquote>
+            <p>Have any issue or idea?
+                <p>
+        </blockquote>
+        <p>我们追求卓越, 然时间, 精力, 经验有限, 可能存在很多不足, 请多各位看官多多包涵, 多提建议和意见.</p>
+        <p><a href="http://rnd-itlab.huawei.com/tWX199212/neoscm-js/issues/new">点我登记问题和提交建议</a> 或者 <a href="mailto:tianze@huawei.com">邮件我</a>
+        </p>
+    </section>
+
+    <br>
+    <br>
+
+    <header data-anchor="build">Build</header>
+
+    <section>
+        <blockquote>
+            <p>安装<code>Grunt.js</code>
+                <p>
+        </blockquote>
+        <p><code>$ npm install -g grunt-cli</code>
+        </p>
+        <br>
+
+        <blockquote>
+            <p>执行<code>build</code>脚本
+                <p>
+        </blockquote>
+        <p><code>$ grunt</code>
+        </p>
+        <p>为了方便代码管理和调试, 目前只是把核心依赖进行压缩合并, 具体见<a href="">Gruntfile.js</a>. <code>relase</code>场景(TODO)</p>
+    </section>
+
+    <br>
+    <br>
+
+    <header data-anchor="joinUs">Join Us</header>
+
+    <section>
+        <p>设计类请认领<code>Design</code>章节(SCM 系统 UI 版面设计)</p>
+    </section>
+
+    <br>
+    <br>
+
+    <header>Develop</header>
+
+    <section>
+        <div class="ui ribbon" data-anchor="style">
+            <span>Less/CSS</span>
+        </div>
+
+        <h3>Introduction</h3>
+        <p>样式部分由<code>Less</code>编写, 不建议<code>CSS</code>
+        </p>
+        <p>思想样式的复用, 可读可维护, 设计原则存在几何形状的组件以<code>ui</code>开头, 允许嵌套进行复用, 命名尽量使用单个单词(从哲学角度讲, 命名越准确, 重用的可能性越小, 比如: <code>.tab-nav-item</code>和<code>.item</code>, 第二个命名就有可能用在<code>tab</code>或者<code>menu</code>等组件中, 所以现在做的是打散命名, 方便后续的重用, 目前还属于打散的阶段)</p>
+        <br>
+
+        <h3>Style Guide</h3>
+        <p>请保持良好的代码结构, 保证代码的可读, 可维护, 不要写成一坨一坨, 压缩会由脚本执行不需要你去手工压缩</p>
+
+        <div class="wrap">
+            <label class="bad">Bad</label>
+            <xmp>
+            .box{border:1px solid #ddd;height:200px;width:200px;}
+            </xmp>
+        </div>
+
+        <div class="wrap">
+            <label class="good">Good</label>
+            <xmp>
+            .box { 
+                border: 1px solid #ddd; 
+                height: 200px; 
+                width: 200px; 
+
+                .right { 
+                    ... 
+                } 
+
+                .left { 
+                ... 
+                } 
+            }
+            </xmp>
+        </div>
+        <p>4格缩进, 1个空格</p>
+        <br>
+
+        <h3>References</h3>
+        <p>参考资料 <a href="//www.semantic-ui.com">Semantic UI</a>, <a href="http://getbootstrap.com/">Bootstrap</a>
+        </p>
+
+    </section>
+
+    <section>
+        <div class="ui ribbon" data-anchor="javascript">
+            <span>Javascript</span>
+        </div>
+
+        <h3>Introduction</h3>
+        <p>组件部分要求无耦合, 简单来讲掰开了还能用, 所以不要过分的抽象, 保持简洁</p>
+        <br>
+
+        <h3>Style Guide</h3>
+        <p>请参考<a href="">Google Javascript</a>, <a href="//github.com/airbnb/javascript">Airbnb Javascript</a>, 无硬性要求, 质量第一, 不要出现连作用域, 闭包, 重排重绘等基础都分不清的选手, 不要动不动就来个全局范围的 DOM Query, 或者全局变量的滥用</p>
+        <p>简单来讲质量第一, 赏心悦目结构良好, 可参考<a href="">jQuery</a>, <a href="">Semantic UI</a>等优秀项目</p>
+        <p>请使用<a href="//www.jshint.com">Jshint</a>做静态检查, 参考设置</p>
+        <xmp>
+        {
+            "laxcomma": true,
+            "smarttabs": true,
+            "loopfunc": true,
+            "shadow": true,
+
+            /** 1 && callback() */
+            "expr": true,
+
+            /** var a = b = c = "" */
+            "-W120": true,
+
+            "-W099": true,
+            "-W061": true,
+            "-W007": true,
+            "-W064": true,
+            "-W069": true,
+            "-W014": true,
+            "-W018": true
+        }
+        </xmp>
+    </section>
+
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["ui/Peek"], function() {
+        $(document.body).peek({ offset: -60 });
+});
+</script>

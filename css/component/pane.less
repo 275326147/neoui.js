@@ -1,0 +1,67 @@
+
+.ui.pane {
+
+       overflow: hidden;
+       position: relative;
+
+       .title {
+                line-height: 32px;
+                height: 32px;
+                background: #ddd;
+                padding: 0 20px;
+                transition: .2s;
+                font-size: .9rem !important;
+                font-family: "Roboto", Sans-serif !important;
+                margin-bottom: 0 !important;
+                color: rgba(0,0,0,.65);
+                cursor: pointer;
+                border: 1px solid darken( #ddd, 10% );
+                position: relative;
+                
+                &:hover {
+                        background-color: darken( #ddd, 5% );
+                }
+
+                &:before {
+                        font-family: "icomoon";
+                        position: absolute;
+                        content: "\e61d";
+                        right: 10px;
+                        top: 0px;
+                        font-size: 20px;
+                }
+                z-index: 1;
+       }
+
+        .content {
+                transition: .2s;
+                padding: 20px !important;
+                color: rgba(0, 0, 0, 0.75) !important;
+                border: 1px solid #ddd;
+        }
+
+       .left {
+                transition: .1s;
+       }
+
+       .right {
+                transition: .3s;
+                position: absolute;
+                right: 0;
+                top: 2;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+       }
+
+       &.open {
+                .left {
+                        transition: .3s;
+                }
+                .right {
+                        transition: .1s;
+                }
+
+                .title:before {
+                        content: "\e61c";
+                }
+       }
+}

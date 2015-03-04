@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="/css/pages/pane.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="example" class="item active">Example</li>
+    <li class="item">API
+        <ul>
+            <li data-anchor="html" class="item">Html</li>
+            <li data-anchor="constructor" class="item">Constructor</li>
+            <li data-anchor="options" class="item">Options</li>
+            <li data-anchor="method" class="item">Method</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="pane">
+
+    <header data-anchor="example">Example</header>
+
+    <section>
+
+        <div class="wrap">
+            <div class="ui pane open" style="width: 800px;">
+                <div class="left" style="width: 28%;">
+                    <header class="title">Header</header>
+                    <div class="content" style="75%">
+                        <h1>#LEFT CONTENT#</h1>
+                    </div>
+                </div>
+                <div class="right content" style="width: 65%;">
+                    <h1>#RIGHT CONTENT#</h1>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <br>
+    <br>
+
+    <header data-anchor="api">API</header>
+
+    <div class="markdown">
+
+        <section>
+            <div class="ui ribbon" data-anchor="html">
+                <span>HTML</span>
+            </div>
+
+            <xmp>
+            <div class="ui pane open" style="width: 800px;">
+                <div class="left" style="width: 28%;">
+                    <header class="title">Header</header>
+                    <div class="content" style="75%">
+                        <h1>#LEFT CONTENT#</h1>
+                    </div>
+                </div>
+                <div class="right content" style="width: 65%;">
+                    <h1>#RIGHT CONTENT#</h1>
+                </div>
+            </div>
+            </xmp>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="constructor">
+                <span>Constructor</span>
+            </div>
+
+            <p><code>$( selector ).pane( [options] )</code>
+            </p>
+
+            <blockquote>
+                <p><code>selector</code> - 选择器或 DOM 元素</p>
+
+                <p><code>options</code> - 参数设置</p>
+            </blockquote>
+
+            <pre>
+        <code>
+        $( ".ui.pane" ).pane();
+        </code></pre>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="options">
+                <span>Options</span>
+            </div>
+
+            <blockquote>
+                <p><code>selector4trigger</code> - <code>".title:first"</code>
+                </p>
+            </blockquote>
+            <p>触发器</p>
+            <br>
+
+            <blockquote>
+                <p><code>expand</code> - <code>"87%"</code>
+                </p>
+            </blockquote>
+            <p>右侧展开比例</p>
+            <br>
+
+            <blockquote>
+                <p><code>collapsed</code> - <code>"82%"</code>
+                </p>
+            </blockquote>
+            <p><code>translateX</code>左侧偏移值</p>
+            <br>
+
+            <blockquote>
+                <p><code>selector4right</code> - <code>".right:first"</code>
+                </p>
+            </blockquote>
+            <p>右侧区域</p>
+            <br>
+
+            <blockquote>
+                <p><code>selector4left</code> - <code>".left:first"</code>
+                </p>
+            </blockquote>
+            <p>左侧区域</p>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="method">
+                <span>Method</span>
+            </div>
+
+            <blockquote>
+                <p><code>slide.open()</code>
+                </p>
+            </blockquote>
+            <p>展开内容区域</p>
+            <br>
+
+            <blockquote>
+                <p><code>slide.close()</code>
+                </p>
+            </blockquote>
+            <p>关闭内容区域</p>
+            <br>
+
+            <blockquote>
+                <p><code>slide.open()</code>
+                </p>
+            </blockquote>
+            <p>展开或收起内容区域</p>
+            <br>
+        </section>
+    </div>
+
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/pane"], function(page) {
+    page($("#pane"));
+});
+</script>

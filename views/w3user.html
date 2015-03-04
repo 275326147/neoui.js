@@ -1,0 +1,103 @@
+
+<link rel="stylesheet" href="/css/pages/w3user.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="example" class="item active">Example</li>
+    <li class="item">API
+        <ul>
+            <li data-anchor="html" class="item">Html</li>
+            <li data-anchor="constructor" class="item">Constructor</li>
+            <li data-anchor="options" class="item">Options</li>
+            <li data-anchor="method" class="item">Method</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="w3user">
+
+    <header data-anchor="example">Example</header>
+
+    <section>
+        <div class="wrap">
+            <div class="ui w3user icon">
+                <input class="ui text front" type="text" placeholder="Type to search..." />
+                <input class="ui text hint" type="text" tabindex="-1" />
+                <i class="icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+
+    <header data-anchor="api">API</header>
+
+    <div class="markdown">
+
+        <section>
+            <div class="ui ribbon" data-anchor="html">
+                <span>HTML</span>
+            </div>
+
+            <xmp>
+            <div class="ui w3user icon">
+                <input class="ui text front" type="text" placeholder="Type to search..." />
+                <input class="ui text hint" type="text" tabindex="-1" />
+                <i class="icon"></i>
+            </div>
+            </xmp>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="constructor">
+                <span>Constructor</span>
+            </div>
+
+            <p><code>$( selector ).w3user( [options] )</code>
+            </p>
+
+            <blockquote>
+                <p><code>selector</code> - 选择器或 DOM 元素</p>
+
+                <p><code>options</code> - 参数设置</p>
+            </blockquote>
+
+        <pre>
+        <code>
+        $( ".ui.yoursComplete" ).w3user();
+        </code></pre>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="options">
+                <span>Options</span>
+            </div>
+
+            <p><code>YoursComplete.js</code>封装, 见 <a href="#autoComplete">YoursComplete Options</a></p>
+        </section>
+
+        <br>
+        <br>
+
+        <section>
+            <div class="ui ribbon" data-anchor="method">
+                <span>Method</span>
+            </div>
+
+            <p><code>YoursComplete.js</code>封装, 见 <a href="#autoComplete">YoursComplete Options</a></p>
+        </section>
+    </div>
+
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/w3user"], function(page) {
+    page($("#w3user"));
+});
+</script>

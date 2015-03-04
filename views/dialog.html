@@ -1,0 +1,256 @@
+<link rel="stylesheet" href="/css/pages/dialog.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="example" class="item active">Example</li>
+    <li class="item">API
+        <ul>
+            <li data-anchor="html" class="item">Html</li>
+            <li data-anchor="constructor" class="item">Constructor</li>
+            <li data-anchor="options" class="item">Options</li>
+            <li data-anchor="method" class="item">Method</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="dialog">
+
+    <header data-anchor="example">Example</header>
+
+    <div class="markdown">
+        <section>
+            <div class="wrap">
+                <div class="ui dialog">
+                    <input class="ui text front" type="text" placeholder="Type to search" />
+                    <input class="ui text hint" type="text" tabindex="-1" />
+                    <i class="icon search"></i>
+                </div>
+            </div>
+        </section>
+        <code>NOTE: 服务随便找的, 可模模糊查询</code>
+
+
+        <br>
+        <br>
+
+        <header>API</header>
+        <section>
+            <div class="ui ribbon" data-anchor="html">
+                <span>HTML</span>
+            </div>
+
+            <xmp>
+            <div class="ui dialog">
+                <input class="ui text front" type="text" placeholder="Type to search" />
+                <input class="ui text hint" type="text" tabindex="-1" />
+                <i class="icon search"></i>
+            </div>
+            </xmp>
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="constructor">
+                <span>Constructor</span>
+            </div>
+
+            <p><code>$( selector ).dialog( options )</code>
+            </p>
+            <blockquote>
+                <p><code>selector</code> - 选择器或 DOM 元素</p>
+
+                <p><code>options</code> - 参数设置</p>
+            </blockquote>
+
+        <xmp>
+        $( ".ui.dialog[name=mrQuery]" ).dialog( {
+            multiple: true,
+            ajaxOptions: {
+                serviceName: "queryPorject",
+                moduleName: "gridElement_publicfind",
+                params: {
+                    "functionId": "12115",
+                    "popUpProgramName": "mrQueryMrNo"
+                },
+                title: "Mr No.",
+
+                onOk: function( items ) {
+
+                    var text = [];
+
+                    for ( var i = (items || []).length; --i >= 0; text.unshift( items[ i ][ "mrNo" ] ) );
+
+                    this.val( text.join( "" ) );
+                },
+
+                columns: [ {
+                    id: "mrno",
+                    field: "mrno",
+                    name: "MR NO.",
+                    filter: true,
+                    sortable: true,
+                    width: 600
+                } ]
+            }
+        } );
+        </xmp>
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="options">
+                <span>Options</span>
+            </div>
+
+            <blockquote>
+                <p><code>css</code> - <code>{ width: 800 }</code>
+                </p>
+            </blockquote>
+            <p>弹出框样式设置</p>
+            <br>
+
+            <blockquote>
+                <p><code>closeByDocument</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>点击弹出框外面, 关闭窗口</p>
+            <br>
+
+            <blockquote>
+                <p><code>forceFitColumns</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>强制对齐所有列, 消除横向滚动条</p>
+            <br>
+
+            <blockquote>
+                <p><code>key</code> - <code>find</code>
+                </p>
+            </blockquote>
+            <p>搜索框<code>name</code>值, 搜索时会将该值传入后台</p>
+            <br>
+
+            <blockquote>
+                <p><code>uniqueKey</code> - <code>rr</code>
+                </p>
+            </blockquote>
+            <p>服务所返回数据的索引键, 比如<code>rownum</code>
+            </p>
+            <br>
+
+            <blockquote>
+                <p><code>pagingInfo</code> - <code>{ pageSize: 100, pageNum: 0 }</code>
+                </p>
+            </blockquote>
+            <p>分页参数, 详见 <a href="#datagrid">SlickGrid+ Pager</a>
+            </p>
+            <br>
+
+            <blockquote>
+                <p><code>autoSearch</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>打开弹出框后默认查询, 设置为<code>false</code>后, 默认不查询</p>
+            <br>
+
+            <blockquote>
+                <p><code>increment</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>为<code>true</code>时为增量分页</p>
+            <br>
+
+            <blockquote>
+                <p><code>fastMode</code> - <code>false</code>
+                </p>
+            </blockquote>
+            <p>设置为<code>true</code>时, 排序, 过滤操作交由浏览器进行本地排序或过滤, 为<code>false</code>时, 由服务器端处理</p>
+            <br>
+
+            <blockquote>
+                <p><code>switcher</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>是否显示切换按钮</p>
+            <br>
+
+            <blockquote>
+                <p><code>multiple</code> - <code>false</code>
+                </p>
+            </blockquote>
+            <p>是否多选</p>
+            <br>
+
+            <blockquote>
+                <p><code>gridOptions</code> - <code>null</code>
+                </p>
+            </blockquote>
+            <p>表格参数参数, 见 <a href="#datagrid">Data Grid</a></p>
+            <br>
+
+            <blockquote>
+                <p><code>selector4input</code> - <code>"input:first"</code>
+                </p>
+            </blockquote>
+            <p>匹配对应输入框, 用于高级定制</p>
+            <br>
+
+            <blockquote>
+                <p><code>selector4trigger</code> - <code>".icon:first"</code>
+                </p>
+            </blockquote>
+            <p>触发器, 取值选择器或 DOM 元素</p>
+            <br>
+
+            <blockquote>
+                <p><code>autoComplete</code> - <code>false</code>
+                </p>
+            </blockquote>
+            <p>接收 AutoComplete 控件参数, 详见 <a href="#autoComplete">AutoCompelte</a> </p>
+            <br>
+
+            <blockquote>
+                <p><code>onOk</code> - <code>null</code>
+                </p>
+            </blockquote>
+            <p>点击 Ok 按钮时调用</p>
+            <br>
+
+            <blockquote>
+                <p><code>onClose</code> - <code>null</code>
+                </p>
+            </blockquote>
+            <p>点击 Cancel 按钮时调用</p>
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="method">
+                <span>Method</span>
+            </div>
+
+            <blockquote>
+                <p><code>dialog.val( [value] )</code>
+                </p>
+            </blockquote>
+            <p><code>value</code>为可选, 不为空时, 设置对应值到输入框, 为空时返回对应输入框文本值, 对于特殊值, 请添加自定义属性或对 DOM 进行数据绑定</p>
+            <br>
+
+            <blockquote>
+                <p><code>dialog.disabled()</code>
+                </p>
+            </blockquote>
+            <p>禁用控件, 同 DOM 节点添加<code>disabled="disabled"</code>
+            </p>
+            <br>
+
+            <blockquote>
+                <p><code>dialog.enabled()</code>
+                </p>
+            </blockquote>
+            <p>启用控件</p>
+        </section>
+    </div>
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/dialog"], function(page) {
+    page($("#dialog"));
+});
+</script>

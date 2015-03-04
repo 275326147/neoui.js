@@ -1,0 +1,1208 @@
+<link rel="stylesheet" href="/css/pages/datagrid.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="example" class="item">Example</li>
+    <li data-anchor="intro" class="item">Introduction</li>
+    <li class="item">API
+        <ul>
+            <li data-anchor="constructor" class="item">Constructor</li>
+            <li data-anchor="gridOptions" class="item">Grid Options</li>
+            <li data-anchor="columnOptions" class="item">Column Options</li>
+            <li data-anchor="core" class="item">Core</li>
+            <li data-anchor="columns" class="item">Columns</li>
+            <li data-anchor="cells" class="item">Cells</li>
+            <li data-anchor="render" class="item">Render</li>
+            <li data-anchor="header" class="item">Header</li>
+            <li data-anchor="checkboxcolumn" class="item">Checkbox Column</li>
+            <li data-anchor="radiocolumn" class="item">Radio Column</li>
+            <li data-anchor="treecolumn" class="item">Tree Column</li>
+            <li data-anchor="actionbar" class="item">Actionbar</li>
+            <li data-anchor="pager" class="item">Pager</li>
+            <li data-anchor="event" class="item">Event</li>
+            <li data-anchor="editor" class="item">Editor</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="datagrid">
+
+    <header data-anchor="example">Example</header>
+
+    <section class="ui slickgrid">
+
+        <div class="action">
+            <div style="float: right;">
+                    <button class="ui button transition icon genius" name="genius"></button>
+                <button class="ui button transition icon lab" name="lab"></button>
+                <button class="ui button transition icon fullscreen" name="fullscreen"></button>
+            </div>
+            <div>
+                <button class="ui button transition icon filter" name="filter"></button>
+                <button class="ui button transition success icon add" name="add"></button>
+                <button class="ui button transition error icon delete" name="delete"></button>
+                <button class="ui button transition primary icon save" name="save"></button>
+            </div>
+        </div>
+
+        <div id="testGrid" class="slickgrid" style="height: 420px; width: 100%;"></div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+
+    <section class="ui slickgrid">
+
+        <div class="action">
+            <div style="float: right;">
+                <button class="ui button transition icon lab" name="lab"></button>
+                <button class="ui button transition icon fullscreen" name="fullscreen"></button>
+            </div>
+            <div>
+                <button class="ui button transition icon filter" name="filter"></button>
+            </div>
+        </div>
+
+        <div id="treeGrid" class="slickgrid" style="height: 320px; width: 100%;"></div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+
+    <header data-anchor="intro">Introduction</header>
+
+    <section>
+        <div class="wrap markdown">
+
+            <div id="intro">
+                <p>Slickgrid+ 是基于SlickGrid的简单高效的Grid组件</p>
+
+                <p>基于其Core, 优化代码, 去掉jQueryUI 依赖, 更轻更快</p>
+
+                <p>针对当前项目中的实际问题与需求重写功能实现, 去掉和现有需求冲突部分, 精简代码, AMD模块化支持, 重新组织项目结构, 易于维护及扩展</p>
+            </div>
+
+            <br>
+
+            <h3>Supports:</h3>
+            <p>高效的性能, 支持百万级数据的操作(通过绝对定位, 减小重排范围以及DOM的重用(修改其TOP值就能改变位置), 动态更新CSS Rule(CSS Style 对象)来高效的调整数据呈现(不用修改DOM树), 定高定宽设计, 快速计算渲染范围, 创建一定量缓存, 缓存节点用于快速渲染, 等... 用先进的设计和优秀的实现来保证性能的卓越)</p>
+            <p>丰富的接口以及简单的扩展</p>
+            <p>键盘操作支持(比如在Checkbox下Ctrl + 鼠标选中数据行, Shit + 鼠标 选中多行数据, 在Delete场景下, 选中记录行后 Backspace 按键, 标记行为删除行, 键盘的上下左右移动等)</p>
+            <p>列的强制对齐(去掉水平滚动条)</p>
+            <p>强大的格式化(通过指定的Formatter, 定制单元格的展示)</p>
+            <p>目前Gridx功能基本都有(排序, 过滤, 编辑, 树形数据, 增删改查, 校验, 单选多选, 事件支持比如联动等...)</p>
+            <p>冻结列(只是将渲染结构放置在两个地方而已, 所以不会有性能问题)</p>
+            <p>自定义列(宽度, 位置, 显示或隐藏, 通过localStorage存储个性化数据, 所以你在关闭浏览器重新打开后还能看到上一次的设置, 同时也不存在啥性能问题)</p>
+            <p>更加简单以及易于维护的代码(你的页面代码仅仅是简单的HTML代码, 不用在Modle中写JSON那么蛋疼了, 同时也更加方便的进行Debug了)</p>
+            <p>和现有服务无缝集成(如果你是Hana那么你得实现相应接口)</p>
+            <p>更加强大的编辑功能, 增加记忆功能, 修改, 增加, 删除的记录只有在Save后才会提交, 比如, 你在第一页修改数据后翻页到第N页, 再次返回到第一页时, 修改的数据不会丢失, 简单来讲你可以一边搜索一边变更数据, 同时能聚焦你的变更数据, 最后才在提交到后台</p>
+            <p>增加本地模式, 由前端进行数据的过滤以及排序, 所以你可以一次加载1000数据, 然后去快速的排序, 过滤, 最后一切OK后 提交到后台</p>
+            <p>科学的编码方式(原生态的前端MVC, CSS 视图层, Html模型, JS控制层, Html中只用写点简单的HTML就好, 不用写那么多牵强难懂的代码, 符合现代化的前端开发, 也能容易从架构上去做整体的优化及调整)</p>
+
+            <br>
+
+            <h3>TODO:</h3>
+            <p>所见即所得的导出, 以及Excel数据直接导入</p>
+
+            <h3>Slickgird VS Gridx</h3> 在不考虑网络情况下的同功能页面对比
+            <p>New MrQuery: http://app.huawei.com/scm/scmui/issui/webengine/huawei/wpf/Framework#/!0/!1q1421512944157_CI00000000024358/!./!./!./!./!./!1421670413675</p>
+            <p>MrQuery: http://app.huawei.com/scm/scmui/issui/webengine/huawei/wpf/Framework#/!0/!ins001744250858_CI00000000021524/!./!./!./!./!./!1421668940141</p>
+            <p>页面整体加载速度:</p>
+
+
+            <img class="preview" src="/images/newnetwork.png">
+            <img class="preview" src="/images/oldnetwork.png">
+
+            <br>
+            <br>
+
+            <p>CPU 快照:</p>
+            <img class="preview" src="/images/new.png">
+            <img class="preview" src="/images/old.png">
+
+            <header>API</header>
+
+            <h3 data-anchor="constructor">Constructor</h3>
+
+            <p><code>new Slick.Grid( container, data, columns, options )</code>
+            </p>
+
+            <blockquote>
+                <p><code>container</code> - 容器节点, DOM元素或者 jQuery 元素, 或选择器</p>
+
+                <p><code>data</code> - 常规数组, 或 Slick.Data.DataView 实例, 或实现getItem(index) 和 getLength() 的对象</p>
+
+                <p><code>columns</code> - 定义列的数组对象, 详细参数见 <a class="goto" href="h3[data-anchor=columnOptions]" title="Column Options">Column Options</a>
+                </p>
+
+                <p><code>options</code> - 附加的参数, 见 <a class="goto" href="h3[data-anchor=gridOptions]" title="Grid Options">Grid Options</a>
+                </p>
+            </blockquote>
+
+            <h3 data-anchor="gridOptions">Grid Options</h3>
+
+            <blockquote>
+                <p><code>asyncEditorLoading</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>单元格编辑器通过定时器加载, 有助于快速的键盘导航时性能的提高</p>
+
+            <blockquote>
+                <p><code>asyncEditorLoadDelay</code> - <code>100</code>
+                </p>
+            </blockquote>
+
+            <p>异步记载延时, 单位毫秒</p>
+
+            <blockquote>
+                <p><code>autoEdit</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>为 true 时单击单元格进入编辑状态, 默认双击</p>
+
+            <blockquote>
+                <p><code>autoHeight</code> - false</p>
+            </blockquote>
+
+            <p>表格高度根据行数据自动撑高, <a href="http://w3cloudnkg-pres1.huawei.com/scm/scmui/scmhanaui/webengine/huawei/wpf/Framework#">示例</a>
+            </p>
+
+            <blockquote>
+                <p><code>cellFlashingCssClass</code> - <code>flashing</code>
+                </p>
+            </blockquote>
+
+            <p>单元格闪烁样式, 通过<code>falshCell()</code> 方法调用</p>
+
+            <blockquote>
+                <p><code>selectedCellCssClass</code> - <code>selected</code>
+                </p>
+            </blockquote>
+
+            <p>单元格选中时的高亮样式</p>
+
+            <blockquote>
+                <p><code>defaultColumnWidth</code> - <code>80</code>
+                </p>
+            </blockquote>
+
+            <p>默认列宽</p>
+
+            <blockquote>
+                <p><code>defaultFormatter</code>
+                </p>
+            </blockquote>
+
+            <p>用于单元格的格式化, 通过定制的格式化, 给予 Grid 丰富展示
+            </p>
+
+            <blockquote>
+                <p><code>editable</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>表格是否可编辑</p>
+
+            <blockquote>
+                <p><code>enableCellNavigation</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>通过键盘上下左右移动 active 单元格</p>
+
+            <blockquote>
+                <p><code>enableColumnReorder</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>列的拖动重新排序, 开启自定义列后数据会保存至 localStorage, 刷新或重新打开浏览器, 显示为最后的列配置顺序</p>
+
+            <blockquote>
+                <p><code>enableTextSelectionOnCells</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>单元格文本可选中, 不推荐设置为 true, 文本很长时, 无法完整选中意义不大, 单元格可编辑时, 错误的文本选中和单元格编辑状态的切换会很迷惑, 建议通过 Column 的配置<code>enableCopy</code>产生浮动框进行选中操作</p>
+
+            <blockquote>
+                <p><code>forceFitColumns</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>对齐所有列, 去除水平滚动条</p>
+
+            <blockquote>
+                <p><code>forceSyncScrolling</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>发生滚动时强制渲染 Grid, 默认是通过定时器去模拟异步加载, 抛弃上一个定时器, 达到性能的最大化, 非特殊场景不要设置 true</p>
+
+            <blockquote>
+                <p><code>rowHeight</code> - <code>35</code>
+                </p>
+            </blockquote>
+
+            <p>默认行高, 目前受样式影响, 所以请不要轻易修改该值, 以免发生样式的错误</p>
+
+            <blockquote>
+                <p><code>headerRowHeight</code> - <code>35</code>
+                </p>
+            </blockquote>
+
+            <p>头行高度, 同上不要轻易修改该值, 没有特殊需求也不要修改该节点, 目前用来产生过滤栏</p>
+
+            <blockquote>
+                <p><code>enableHeaderRow</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>加载<code>Paging.js</code>后用于创建头过滤栏</p>
+
+            <blockquote>
+                <p><code>headerRowVisibility</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>默认展示过滤栏</p>
+
+
+            <h3 data-anchor="columnOptions">Column Options</h3>
+
+            <p><code>cssClass</code> - <code></code>
+            </p>
+
+            <p>列的附加样式</p>
+
+            <p><code>editor</code> - <code>null</code>
+            </p>
+
+            <blockquote>
+                <p><code>slick/editors/Text</code> - 文本编辑器</p>
+
+                <p><code>slick/editors/Select</code> - 下拉框编辑器</p>
+
+                <p><code>slick/editors/TextArea</code> - 文本域</p>
+
+                <p><code>slick/editors/Calendar</code> - 日期</p>
+
+                <p><code>slick/editors/Dialog</code> - 弹窗框</p>
+            </blockquote>
+ 
+           <pre>
+            <code>
+        require( [ &quot;slick/editors/Text&quot;, &quot;slick/editors/Select&quot; ], function( Text, Dialog ) {
+            var coluns = [ {
+                id: &quot;column1&quot;,
+                name: &quot;No.2&quot;,
+                field: &quot;num2&quot;,
+                editor: Text,
+                filter: true,
+                sortable: true,
+                width: 200,
+                require: true
+            }, {
+            id: &quot;column2&quot;,
+                name: &quot;Yes No&quot;,
+                field: &quot;yesNo&quot;,
+                editor: Select,
+                editorArgs: { items: [ { value: &quot;N&quot;, label: &quot;No&quot; }, { value: &quot;Y&quot;, label: &quot;Yes&quot; } ] },
+                filter: true,
+                width: 200,
+                sortable: false
+            } ];
+
+            ...
+        }
+            </code></pre>
+
+            <p>见 <a class="goto" href="h3[data-anchor=editor]">Editor</a>部分</p>
+
+            <blockquote>
+                <p><code>field</code> - <code></code>
+                </p>
+            </blockquote>
+
+            <p>字段键值名称</p>
+
+            <blockquote>
+                <p><code>focusable</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>设置为 false 时, 该单元格无法被选中, Tab 键导航时也会被忽略</p>
+
+            <blockquote>
+                <p><code>frozen</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>冻结列设置</p>
+
+            <blockquote>
+                <p><code>formatter</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>单元格格式化, 参考 <a href="//w3cloudnkg-pres1.huawei.com/scm/scmui/scmhanaui/webengine/huawei/wpf/Framework#/!0/!vp1420530557341_DC00000000148971/!./!./!./!./!./!1421809003652">示例1</a> <a href="http://w3cloudnkg-dev1.huawei.com/scm/scmui/fndui/webengine/huawei/wpf/Framework">示例2</a>, 同<code>defaultFormatter</code>优先级大于<code>defaultFormatter</code>
+            </p>
+
+            <blockquote>
+                <p><code>headerCssClass</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>头行的附加样式</p>
+
+            <blockquote>
+                <p><code>id</code> - 唯一</p>
+
+                <p><code>maxWidth</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>列的最大宽度</p>
+
+            <blockquote>
+                <p><code>minWidth</code> - <code>30</code>
+                </p>
+            </blockquote>
+
+            <p>列的最小宽度, 避免拖动列宽度过小而看不见</p>
+
+            <blockquote>
+                <p><code>width</code> - <code></code>
+                </p>
+            </blockquote>
+
+            <p>取值范围大于 minWidth 小于 maxWidth</p>
+
+            <blockquote>
+                <p><code>name</code> - <code></code>
+                </p>
+            </blockquote>
+
+            <p>显示名称, 可以是 Html, 所以你可以显示一些奇怪的东西...</p>
+
+            <blockquote>
+                <p><code>resizable</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>是否允许拖动改变列宽</p>
+
+            <blockquote>
+                <p><code>sortable</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>排序</p>
+
+            <blockquote>
+                <p><code>validator</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <pre>
+            <code> 
+        validator: function( value, item, column ) {
+            var result = { valid: true };
+            if ( !value ) {
+                result.valid = false;
+            }
+            return result;
+        }
+            </code></pre>
+
+            <p>单元格校验器</p>
+
+            <blockquote>
+                <p><code>cssClass</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>指定列的样式, 多个以空格分隔</p>
+
+            <blockquote>
+                <p><code>tooltip</code> - <code></code>
+                </p>
+            </blockquote>
+
+            <p>列头 title</p>
+
+            <blockquote>
+                <p><code>showTooltip</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>是否显示列头 title</p>
+
+            <blockquote>
+                <p><code>showTitle</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>单元格 title, 内容为其 name</p>
+
+            <h3 data-anchor="core">Core</h3>
+
+            <p><code>grid.init()</code>
+            </p>
+
+            <p>初始化表格, 设置<code>explicitInitialization</code>后会自动调用该方法, 大部分情况是初始化前需要加载一些Plugin, 所以<code>explicitInitialization</code> 默认是 false 的, 因此你需要显性的调用该方法初始化表格</p>
+
+            <p><code>grid.getData()</code>
+            </p>
+
+            <p>返回<code>Constructor</code>输入的<code>data</code>
+            </p>
+
+            <p><code>grid.setData( newDate, scrollTop )</code>
+            </p>
+
+            <blockquote>
+                <p><code>newData</code> - 新的数据模型, 见上文</p>
+
+                <p><code>scrollTop</code> - 参数 true 时, 重置Grid 视口位置(重置滚动条位置)</p>
+            </blockquote>
+
+            <p>该方法不会导致 Grid 的重新渲染, 你需要调用 render 去重新渲染</p>
+
+            <p><code>grid.getDataLength()</code>
+            </p>
+
+            <p>返回当前视口数据数量</p>
+
+            <p><code>grid.getOptions()</code>
+            </p>
+
+            <p>返回当前 Grid 的 Options </p>
+
+            <p><code>grid.setOptions( args )</code>
+            </p>
+
+            <blockquote>
+                <p><code>args</code> - JSON 对象, extend 到当前 Options</p>
+            </blockquote>
+
+            <p>会重新渲染Grid</p>
+
+            <p><code>grid.setSelectionModel( selectionModel )</code>
+            </p>
+
+            <blockquote>
+                <p><code>selectionModel</code> - 选择模式</p>
+            </blockquote>
+
+            <p>单元格的选中或行的选中, 目前的行选择以在 Plugin 部分实现, 见 <a class="goto" href="h3[data-anchor=checkboxcolumn]">Checkbox Column</a>
+            </p>
+
+            <p><code>grid.getSelectionModel()</code>
+            </p>
+
+            <p>获取当前的选择模式</p>
+
+            <h3 data-anchor="columns">Columns</h3>
+
+            <p><code>grid.getColumns()</code>
+            </p>
+
+            <p>返回当前 Grid 的所有列配置</p>
+
+            <p><code>grid.setColumns( columnsDefinitions )</code>
+            </p>
+
+            <blockquote>
+                <p><code>columnsDefinitions</code> - 数组, 包含列配置的数组</p>
+            </blockquote>
+
+            <p><code>grid.getColumnIndex( id )</code>
+            </p>
+
+            <blockquote>
+                <p><code>id</code> - 列的 ID</p>
+            </blockquote>
+
+            <p>返回对应列在 Columns 定义中的索引</p>
+
+            <p><code>grid.updateColumnHeader( columnId, title, tooltip )</code>
+            </p>
+
+            <blockquote>
+                <p><code>columnId</code> - 列的 ID</p>
+
+                <p><code>title</code> - 新的列显示名称</p>
+
+                <p><code>tooltip</code> - 新的提示信息</p>
+            </blockquote>
+
+            <p>更新以存在的列的列头DOM</p>
+
+            <p><code>grid.autosizeColumns()</code>
+            </p>
+
+            <p>强制对齐所有列, 去除水平滚动条, 等效 <code>forceFitForce</code>
+            </p>
+
+            <h3 data-anchor="cells">Cells</h3>
+
+            <p><code>grid.addCellCssStyles( key, hash )</code>
+            </p>
+
+            <blockquote>
+                <p><code>key</code> - 唯一, 通过该值添加删除附加样式</p>
+
+                <p><code>hash</code> - 附加的样式可能是针对指定的单元格, 所以该值为 Hash 串, 结构如下</p>
+            </blockquote>
+
+            <pre><code>
+        {
+            rownum: {
+                "columnid": "className",
+                "columnid": "className className"
+            }
+        }
+            </code></pre>
+
+            <p>通过 key 值应用 hash 串中对应样式到对应单元格, 可以同时存在多个, 比如现有的行选中以及删除行的样式等都是通过该方法去控制样式</p>
+
+            <p><code>grid.getCellCssStyles( key )</code>
+            </p>
+
+            <p>返回对应 hash 值</p>
+
+            <p><code>grid.removeCellCssStyles( key )</code>
+            </p>
+
+            <p>移除 key 值对应的附加样式</p>
+
+            <p><code>grid.canCellBeActive( row, col )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行的序号</p>
+
+                <p><code>col</code> - 列的序号</p>
+            </blockquote>
+
+            <p>判断指定单元格是否可激活(单元格选中后会增加 active 样式)</p>
+
+            <p><code>grid.canCellBeSelected( row, col )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行的序号</p>
+
+                <p><code>col</code> - 列的序号</p>
+            </blockquote>
+
+            <p>指定单元格存在<code>selectedCellCssClass</code>时返回 true, 单元格在存在于当前 Grid 以及列的定义中未配置<code>unselectable</code>时可被选中</p>
+
+            <p><code>grid.flashCell( row, cell, speed )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+
+                <p><code>cell</code> - 单元格的序号</p>
+
+                <p><code>speed</code> - 可选, flash 样式的延时时间值, 单位毫秒, 默认100</p>
+            </blockquote>
+
+            <p>指定的单元格闪烁</p>
+
+            <p><code>grid.getActiveCell()</code>
+            </p>
+
+            <p>获取当前 Grid 中 active 的单元格, 返回值为 hash 串, 结构如下:</p>
+
+            <pre><code>
+        {
+            row: 0,
+            cell: 0
+        }
+            </code></pre>
+
+            <p><code>grid.setActiveCell( row, cell )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+
+                <p><code>cell</code> - 单元格序号</p>
+            </blockquote>
+
+            <p>设置指定单元格 active</p>
+
+            <p><code>grid.resetActiveCell()</code>
+            </p>
+
+            <p>重置 active 的单元格</p>
+
+            <p><code>grid.getActiveCellNode()</code>
+            </p>
+
+            <p>获取处于激活状态单元格的 DOM 节点</p>
+
+            <p><code>grid.getActiveCellPosition()</code>
+            </p>
+
+            <pre><code>
+        { 
+            bottom:  [numPixels],
+            height:  [numPixels],
+            left:    [numPixels], 
+            right:   [numPixels], 
+            top:     [numPixels], 
+            visible: [boolean], 
+            width:   [numPixels] 
+        }
+            </code></pre>
+
+            <p><code>grid.getCellFromEvent( e )</code>
+            </p>
+
+            <blockquote>
+                <p><code>e</code> - event 对象</p>
+            </blockquote>
+
+            <p>返回包含row和cell 值的 hash 对象</p>
+
+            <p><code>grid.getCellNode( row, cell )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+
+                <p>cell - 列的序号</p>
+            </blockquote>
+
+            <p>返回指定单元格的 DOM 节点</p>
+
+            <h3 data-anchor="render">Render</h3>
+
+            <p><code>grid.invalidate()</code>
+            </p>
+
+            <p>抛弃所有的缓存, 重新渲染 Grid</p>
+
+            <p><code>grid.invalidateAllRows()</code>
+            </p>
+
+            <p>清除所有缓存, 但是不会重新渲染表格</p>
+
+            <p><code>grid.invalidateRow( row )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+            </blockquote>
+
+            <p>清除指定行的缓存, 然后调用 <code>render</code> 将重新渲染 invalid 的行</p>
+
+            <p><code>grid.invalidateRows( rows )</code>
+            </p>
+
+            <blockquote>
+                <p><code>rows</code> - 包含行号的数组</p>
+            </blockquote>
+
+            <p>同上, 清除多行的缓存</p>
+
+            <p><code>grid.render()</code>
+            </p>
+
+            <p>重新生成行的 DOM</p>
+
+            <p><code>grid.resizeCanvas()</code>
+            </p>
+
+            <p>Resize Grid 的大小, 比如在初始化一个不可见的 Grid 后, 在切换到可见时你需要调用该方法重新渲染表格</p>
+
+            <p><code>grid.scrollCellIntoView( row, cell )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+
+                <p><code>cell</code> - 单元格序号</p>
+            </blockquote>
+
+            <p>滚动视口到指定单元格</p>
+
+            <p><code>grid.scrollRowToTop( row )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+            </blockquote>
+
+            <p>滚动到指定行</p>
+
+            <h3 data-anchor="header">Header</h3>
+
+            <p><code>grid.getSortColumns()</code>
+            </p>
+
+            <p>获取当前的排序列</p>
+
+            <pre><code>
+        { 
+            columnId: [string],
+            sortAsc:  [boolean]
+        }
+            </code></pre>
+
+            <p><code>grid.setHeaderRowVisibility( visible )</code>
+            </p>
+
+            <blockquote>
+                <p><code>visible</code> - true/false</p>
+            </blockquote>
+
+            <p>在<code>enableHeaderRow</code>为 true 时有效, 主要用于过滤的行</p>
+
+            <p><code>grid.toggleHeaderRow()</code>
+            </p>
+
+            <p>隐藏或显示头行</p>
+
+            <h3 data-anchor="checkboxcolumn">Checkbox Column</h3>
+
+            <p>引入<code>self/plugins/Checkboxcolumn</code> 模块</p>
+
+            <pre>
+            <code>
+        require( [ &quot;self/plugins/Checkboxcolumn&quot;
+                    ...
+                ], function( Checkboxcolumn, ... ) {
+            
+            var columns, grid;
+            ...
+            grid.setColumns( (columns.unshift( Checkboxcolumn( grid ) ), columns) );
+            ...
+        } );
+            </code></pre>
+
+            <p><code>Checkboxcolumn( grid, [options] )</code>
+            </p>
+
+            <p><strong>Options</strong>
+            </p>
+
+            <blockquote>
+                <p><code>columnId</code> - <code>_checkbox_selector</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>tooltip</code> - <code>Select/Deselect All</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>cssClass</code> - <code>slick-cell-checkbox</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>frozen</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>是否冻结</p>
+
+            <blockquote>
+                <p><code>width</code> - <code>35</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <p><strong>Method</strong>
+            </p>
+
+            <p><code>grid.setSelectedRows( [rows] )</code>
+            </p>
+
+            <blockquote>
+                <p><code>rows</code> - 包含行号的数组</p>
+            </blockquote>
+
+            <p>设置指定行为选中行, 参数空数组时清除所有选中行</p>
+
+            <p><code>grid.selectedAllRows()</code>
+            </p>
+            <p>选中所有行, <code>grid.setSelectedRows( [] )</code>取消所有行选中</p>
+
+            <p><code>grid.getSelectedRows()</code>
+            </p>
+
+            <p>返回选中行的行号</p>
+
+            <p><code>grid.getSelectedRowsData()</code>
+            </p>
+
+            <p>返回选中行的完整数据</p>
+
+            <h3 data-anchor="radiocolumn">Radio Column</h3>
+
+            <p>引入<code>self/plugins/Radiocolumn</code> 模块</p>
+
+            <pre>
+            <code>
+        require( [ &quot;self/plugins/Radiocolumn&quot;
+                    ...
+                ], function( Radiocolumn, ... ) {
+            
+            var columns, grid;
+            ...
+            grid.setColumns( (columns.unshift( Radiocolumn( grid ) ), columns) );
+            ...
+        } );
+            </code></pre>
+
+            <p><strong>Options</strong>
+            </p>
+
+            <blockquote>
+                <p><code>columnId</code> - <code>_radio_selector</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>cssClass</code> - <code>slick-cell-radio</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>frozen</code> - <code>true</code>
+                </p>
+            </blockquote>
+
+            <p>是否冻结</p>
+
+            <blockquote>
+                <p><code>width</code> - <code>35</code>
+                </p>
+            </blockquote>
+
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <blockquote>
+                <p><code>key</code> - <code>radio-select</code>
+                </p>
+            </blockquote>
+
+            <p>选中样式对应的 key 值</p>
+
+            <blockquote>
+                <p><code>cssCellClass</code> - <code>slick-radio-radio</code>
+                </p>
+            </blockquote>
+
+            <p>单行选中时的附加样式</p>
+
+            <blockquote>
+                <p><code>autoSelected</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>是否默认选中第一行</p>
+
+            <blockquote>
+                <p><code>duplicate</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>选中行时是否允许再次产生单选事件</p>
+
+            <p><strong>Method</strong>
+            </p>
+
+            <p><code>grid.getRadioRow()</code>
+            </p>
+
+            <p>获取当前单选行</p>
+
+            <p><code>grid.setRadioRow( row )</code>
+            </p>
+
+            <blockquote>
+                <p><code>row</code> - 行号</p>
+            </blockquote>
+
+            <p>设置单选行</p>
+
+            <h3 data-anchor="treecolumn">Tree Column</h3>
+
+            <p>引入<code>self/plugins/Treecolumn</code> 模块</p>
+
+            <pre>
+            <code>
+        require( [ &quot;self/plugins/Treecolumn&quot;
+                    ...
+                ], function( Treecolumn, ... ) {
+            
+            var columns, grid;
+            ...
+            grid.setColumns( (columns.unshift( Treecolumn( grid, options ) ), columns) );
+            ...
+        } );
+            </code></pre>
+
+            <p><strong>Options</strong>
+            </p>
+
+            <blockquote>
+                <p><code>idKey</code> - <code>"id"</code>
+                </p>
+            </blockquote>
+
+            <p>树形数据<code>id</code>键</p>
+
+            <blockquote>
+                <p><code>parentKey</code> - <code>"parentid"</code>
+                </p>
+            </blockquote>
+
+            <p>树形数据节点关联键</p>
+
+            <blockquote>
+                <p><code>roots</code> - <code>[ "-1" ]</code>
+                </p>
+            </blockquote>
+
+            <p><code>root</code>节点<code>parentKey</code>值</p>
+
+            <blockquote>
+                <p><code>expand</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>为<code>true</code>时展开所有子节点</p>
+
+            <blockquote>
+                <p><code>columnOptions</code> - <code>Object</code>
+                </p>
+            </blockquote>
+
+            <p>列定义默认包含展开/收起样式的<code>formatter</code>, 如需修改请参考 <a href="//rnd-itlab.huawei.com/tWX199212/neoscm-js/blob/dev/js/src/slick/plugins/Treecolumn.js">Treecolumn.js</a></p>
+            <p>见 <a class="goto" href="h3[data-anchor=columnOptions]">Column Options</a> 部分</p>
+
+            <h3 data-anchor="actionbar">Actionbar</h3>
+
+            <p>引入<code>self/plugins/Actionbar</code> 模块</p>
+
+            <pre>
+            <code>
+        require( [ &quot;self/plugins/Actionbar&quot;
+                    ...
+                ], function( Actionbar, ... ) {
+            
+            ...
+
+            Actionbar( grid, {
+                save: { enable: true, selector: &quot;button[name=save]&quot; },
+                del: { enable: true },
+                add: { enbale: true },
+                genius: { enable: true },
+                lab: { enable: true, options: { key: &quot;i&#39;m unique&quot; } },
+                filter: { enable: true, selector: &quot;button[name=filter]&quot; },
+                fullscreen: { enable: true }
+            } );
+            ...
+        } );
+            </code></pre>
+
+            <p><code>Actionbar( grid, options )</code>
+            </p>
+
+            <p>所有<code>action</code>默认为<code>false</code>
+            </p>
+
+            <p><strong>Options</strong>
+            </p>
+
+            <blockquote>
+                <p><code>genius</code> - 是否记忆增删改数据</p>
+
+                <p><code>lab</code> - 表格自定义等附加功能性配置</p>
+
+                <p><code>add</code> - 增加行</p>
+
+                <p><code>del</code> - 删除行</p>
+
+                <p><code>save</code> - 保存记录</p>
+
+                <p><code>filter</code> - 过滤栏隐藏显示</p>
+
+                <p><code>fullscreen</code> - Grid 最大化显示</p>
+            </blockquote>
+
+            <h3 data-anchor="pager">Pager</h3>
+
+            <p>引入<code>self/plugins/Actionbar</code> 模块, <a href="//w3cloudnkg-dev1.huawei.com/scm/scmui/fndui/webengine/huawei/wpf/Framework#/!0/!0e1418611390469_DC00000000144494/!./!./!./!./!./!1421810616018">示例</a>
+            </p>
+
+            <pre>
+            <code>
+        require( [ &quot;self/plugins/Paging&quot;
+                    ...
+                ], function( Paging, ... ) {
+            
+            Paging( grid, options );
+            ...
+        } );
+            </code></pre>
+
+            <p><strong>Options</strong>
+            </p>
+
+            <blockquote>
+                <p><code>container</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>选择器或 DOM 节点, 用于产生分页栏</p>
+
+            <blockquote>
+                <p><code>autoSearch</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>Grid 加载后自动查询</p>
+
+            <blockquote>
+                <p><code>increment</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>设置为<code>true</code>时为增量分页</p>
+
+            <blockquote>
+                <p><code>parmas</code> - <code>null</code>
+                </p>
+            </blockquote>
+
+            <p>固化参数, 每次 ajax 服务都会附加的参数</p>
+
+            <blockquote>
+                <p><code>fastMode</code> - <code>false</code>
+                </p>
+            </blockquote>
+
+            <p>用于本地端和服务器端的数据过滤排序的操作切换, true 为本地端模式</p>
+
+            <blockquote>
+                <p><code>pagingInfo</code>
+                </p>
+            </blockquote>
+
+            <pre>
+            <code>
+        {
+            pageSize: 50,
+            pageNum: 0,
+            sizes: [ 50, 100, 200 ]
+        }
+            </code></pre>
+
+            <p>分页信息</p>
+
+            <blockquote>
+                <p><code>ajaxOptions</code> - WPF 服务参数</p>
+            </blockquote>
+
+            <pre>
+            <code>
+        {
+            name: 服务名称
+            module: 模块名称, 默认值为 kiss
+            params: 参数输入
+        }
+            </code></pre>
+
+            <p><strong>Method</strong>
+            </p>
+
+            <p><code>grid.search( params )</code>
+            </p>
+
+            <blockquote>
+                <p><code>params</code> - Function 或 Object</p>
+            </blockquote>
+
+            <p>Grid 查询, 返回 Promise 对象</p>
+
+            <p><code>grid.commit()</code>
+            </p>
+
+            <p>提交当前变更数据到服务器端, 返回 Promise 对象</p>
+
+            <h3 data-anchor="event">Event</h3>
+
+            <ul>
+                <li>onScroll</li>
+                <li>onSort</li>
+                <li>onHeaderClick</li>
+                <li>onMouseEnter</li>
+                <li>onMouseLeavel</li>
+                <li>onClick</li>
+                <li>onDbClick</li>
+                <li>onValidationError</li>
+                <li>onColumnsReordered</li>
+                <li>onColumnsResized</li>
+                <li>onCellChange</li>
+                <li>onBeforeEditCell</li>
+                <li>onBeforeCellEditorDestroy</li>
+                <li>onHeaderCellRendered</li>
+                <li>onActiveCellChanged</li>
+                <li>onSelectedRowsChanged</li>
+                <li>onCellCssStylesChanged</li>
+                <li>onRadioRow</li>
+            </ul>
+
+            <p>注册事件</p>
+
+            <pre>
+            <code> 
+        grid.onXXXEvent.subscribe( function( e, args ) {
+                ...
+        } );
+            </code></pre>
+
+            <p>解除事件绑定</p>
+
+            <pre>
+            <code> 
+        grid.onXXXEvent.unsubscribe( fn );
+            </code></pre>
+
+            <h3 data-anchor="editor">Editor(TODO)</h3>
+        </div>
+    </section>
+
+    <br>
+    <br>
+
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/datagrid"], function(page) {
+    page($("#datagrid"));
+});
+</script>

@@ -1,0 +1,502 @@
+.ui.slide {
+  overflow: hidden;
+  position: relative;
+}
+.ui.slide .title {
+  line-height: 32px;
+  height: 32px;
+  background: #ddd;
+  padding: 0 20px;
+  transition: .2s;
+  font-size: .9rem !important;
+  font-family: "Roboto", Sans-serif !important;
+  margin-bottom: 0 !important;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  border: 1px solid #c4c4c4;
+  position: relative;
+  z-index: 1;
+}
+.ui.slide .title:hover {
+  background-color: #d0d0d0;
+}
+.ui.slide .title:before {
+  font-family: "icomoon";
+  position: absolute;
+  content: "\e603";
+  right: 10px;
+  top: 0px;
+  font-size: 20px;
+}
+.ui.slide .content {
+  transition: .2s;
+  opacity: 0;
+  visibility: hidden;
+  width: auto !important;
+  padding: 20px !important;
+  position: relative;
+  color: rgba(0, 0, 0, 0.75) !important;
+  border: 1px solid #ddd;
+  border-top: 0;
+  -webkit-transform: translateY(-100%);
+  height: 0;
+}
+.ui.slide.open .title:before {
+  content: "\e6b9";
+}
+.ui.slide.open .content {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  -webkit-transform: translateY(0);
+}
+#slide {
+  padding-left: 340px;
+  padding-bottom: 100px;
+  font-family: "Roboto", Sans-serif;
+  font-size: 0.85rem;
+}
+#slide header {
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+  font-weight: 100;
+  font-size: 3.5rem;
+  color: #656d78;
+  text-align: left;
+  margin-bottom: 20px;
+}
+#slide section {
+  padding: 20px 0 5px 20px;
+  border-left: 1px solid #ddd;
+  margin-bottom: 30px;
+  position: relative;
+  width: 900px;
+}
+#slide section > div.view-code {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+  padding: 9px 18px 0 0;
+}
+#slide section > div.view-code:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+#slide section > div.view-code .icon {
+  font-size: 20px;
+}
+#slide section .circle {
+  height: 38px;
+  width: 38px;
+  line-height: 38px;
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  text-align: center;
+}
+#slide section .circle .icon {
+  font-size: 20px;
+}
+#slide section .circle .icon.play {
+  color: #13cc72;
+}
+#slide section .circle .icon.play:hover {
+  color: #0f9d58;
+}
+#slide section .circle .icon.stop {
+  color: #f77066;
+}
+#slide section .circle .icon.stop:hover {
+  color: #f44336;
+}
+#slide h1 {
+  font-family: "Roboto", Sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+}
+#slide code,
+#slide xmp,
+#slide .note {
+  display: block;
+  font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+}
+#slide .note {
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 48px;
+  height: 48px;
+}
+#slide code,
+#slide xmp {
+  -webkit-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+}
+#slide xmp {
+  padding-right: 20px;
+}
+#slide .markdown {
+  display: block;
+  font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+#slide .markdown p {
+  height: auto;
+  line-height: 28px;
+}
+#slide .markdown #intro p {
+  line-height: 32px;
+  text-indent: 0;
+}
+#slide .markdown h3 {
+  color: rgba(0, 0, 0, 0.8);
+  margin: 20px 0;
+}
+#slide .markdown a {
+  color: #4183C4;
+}
+#slide .markdown a.absent {
+  color: #cc0000;
+}
+#slide .markdown a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+#slide .markdown h1,
+#slide .markdown h2,
+#slide .markdown h3,
+#slide .markdown h4,
+#slide .markdown h5,
+#slide .markdown h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+#slide .markdown h1 tt,
+#slide .markdown h1 code {
+  font-size: inherit;
+}
+#slide .markdown h2 tt,
+#slide .markdown h2 code {
+  font-size: inherit;
+}
+#slide .markdown h3 tt,
+#slide .markdown h3 code {
+  font-size: inherit;
+}
+#slide .markdown h4 tt,
+#slide .markdown h4 code {
+  font-size: inherit;
+}
+#slide .markdown h5 tt,
+#slide .markdown h5 code {
+  font-size: inherit;
+}
+#slide .markdown h6 tt,
+#slide .markdown h6 code {
+  font-size: inherit;
+}
+#slide .markdown h1 {
+  font-size: 28px;
+  color: black;
+}
+#slide .markdown h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black;
+}
+#slide .markdown h3 {
+  font-size: 18px;
+}
+#slide .markdown h4 {
+  font-size: 16px;
+}
+#slide .markdown h5 {
+  font-size: 14px;
+}
+#slide .markdown h6 {
+  color: #777777;
+  font-size: 14px;
+}
+#slide .markdown p,
+#slide .markdown blockquote,
+#slide .markdown ul,
+#slide .markdown ol,
+#slide .markdown dl,
+#slide .markdown li,
+#slide .markdown table,
+#slide .markdown pre {
+  margin: 15px 0;
+}
+#slide .markdown hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+#slide .markdown body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#slide .markdown body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#slide .markdown body > h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#slide .markdown dy > h3:first-child,
+#slide .markdown body > h4:first-child,
+#slide .markdown body > h5:first-child,
+#slide .markdown body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#slide .markdown a:first-child h1,
+#slide .markdown a:first-child h2,
+#slide .markdown a:first-child h3,
+#slide .markdown a:first-child h4,
+#slide .markdown a:first-child h5,
+#slide .markdown a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#slide .markdown h1 p,
+#slide .markdown h2 p,
+#slide .markdown h3 p,
+#slide .markdown h4 p,
+#slide .markdown h5 p,
+#slide .markdown h6 p {
+  margin-top: 0;
+}
+#slide .markdown li p.first {
+  display: inline-block;
+}
+#slide .markdown ul,
+#slide .markdown ol {
+  padding-left: 30px;
+}
+#slide .markdown ol#footnotes {
+  padding-top: 15px;
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+}
+#slide .markdown ul :first-child,
+#slide .markdown ol :first-child {
+  margin-top: 0;
+}
+#slide .markdown ul :last-child,
+#slide .markdown ol :last-child {
+  margin-bottom: 0;
+}
+#slide .markdown dl {
+  padding: 0;
+}
+#slide .markdown dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+#slide .markdown dl dt:first-child {
+  padding: 0;
+}
+#slide .markdown dl dt > :first-child {
+  margin-top: 0;
+}
+#slide .markdown dl dt > :last-child {
+  margin-bottom: 0;
+}
+#slide .markdown dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+#slide .markdown dl dd > :first-child {
+  margin-top: 0;
+}
+#slide .markdown dl dd > :last-child {
+  margin-bottom: 0;
+}
+#slide .markdown blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+#slide .markdown blockquote > :first-child {
+  margin-top: 0;
+}
+#slide .markdown blockquote > :last-child {
+  margin-bottom: 0;
+}
+#slide .markdown table {
+  padding: 0;
+}
+#slide .markdown table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+#slide .markdown table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+#slide .markdown table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+#slide .markdown table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+#slide .markdown table tr th :first-child,
+#slide .markdown table tr td :first-child {
+  margin-top: 0;
+}
+#slide .markdown table tr th :last-child,
+#slide .markdown table tr td :last-child {
+  margin-bottom: 0;
+}
+#slide .markdown img {
+  max-width: 100%;
+}
+#slide .markdown span.frame {
+  display: block;
+  overflow: hidden;
+}
+#slide .markdown span.frame > span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
+#slide .markdown span.frame span img {
+  display: block;
+  float: left;
+}
+#slide .markdown span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
+#slide .markdown span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+#slide .markdown span.align-center > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
+#slide .markdown span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+#slide .markdown span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+#slide .markdown span.align-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
+#slide .markdown span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+#slide .markdown span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left;
+}
+#slide .markdown span.float-left span {
+  margin: 13px 0 0;
+}
+#slide .markdown span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right;
+}
+#slide .markdown span.float-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
+#slide .markdown code,
+#slide .markdown tt {
+  margin: 0 2px;
+  padding: 5px 10px;
+  display: inline;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: none;
+}
+#slide .markdown pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+#slide .markdown .highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+#slide .markdown pre {
+  background-color: #f8f8f8;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+}
+#slide .markdown pre code,
+#slide .markdown pre tt {
+  background-color: transparent;
+  border: none;
+}
+#slide .markdown xmp {
+  overflow: auto;
+}
+#slide .ui.slide h1 {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}

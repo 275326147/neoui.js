@@ -1,0 +1,165 @@
+
+@import (less) "../base/colors.less";
+
+.ui.calendar {
+	position: relative;
+
+	.container {
+		box-shadow: 0 1px 24px rgba(0,0,0,.24);
+		outline: 0;
+		position: absolute;
+		right: 0;
+		width: 245px;
+		transition: .3s;
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transform: scale(.6);
+		-moz-transform: scale(.6);
+		-ms-transform: scale(.6);
+		transform: scale(.6);
+
+		&.show {
+			opacity: 1;
+			visibility: visible;
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			-ms-transform: scale(1);
+			transform: scale(1);
+		}
+	}
+
+	.icon.calendar {
+		top: 17px;
+	}
+
+	.control {
+		color: #fff;
+		padding: 20px 15px;
+		box-shadow: 0 1px 5px rgba(0,0,0,.2);
+		position: relative;
+		height: 50px;
+		background-color: @google;
+	}
+
+	.icon.first, .icon.prev, .icon.next, .icon.last, .date {
+		transition: .3s;
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		&:hover {
+			color: @dribbble;
+		}
+	}
+
+	.icon.first {
+		left: 14px;
+	}
+
+	.icon.last {
+		right: 14px;
+	}
+
+	.icon.prev {
+		left: 40px;
+	}
+
+	.icon.next {
+		right: 40px;
+	}
+
+	.date {
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		-moz-transform: translateX(-50%) translateY(-50%);
+		-ms-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+		font-size: 14px;
+		text-shadow: 6px 3px 15px #000;
+	}
+
+	.content {
+		position: relative;
+		display: inline-block;
+	}
+
+	.days {
+		left: 0;
+		margin: 0;
+		background-color: #fff;
+	}
+
+	.header {
+		background-color: #eaf4f8;
+
+		& > div {
+			width: 35px;
+			display: inline-block;
+			text-align: center;
+			font-size: 12px;
+			line-height: 35px;
+		}
+	}
+
+	.day {
+		width: 35px;
+		display: inline-block;
+		line-height: 35px;
+		text-align: center;
+		color: #313131;
+		cursor: pointer;
+		transition: .2s;
+
+		&.adjacent {
+			color: rgba(0,0,0,.46);
+			background-color: #f1f1f1;
+			border-color: #ebebeb;
+		}
+
+		&.current {
+			color: #fff;
+			background-color: #83d8b6;
+		}
+
+		&.today {
+			color: white;
+			background-color: @google;
+		}
+
+		&:hover {
+			background-color: #deeef7;
+		}
+	}
+
+	.time {
+		text-align: center;
+		z-index: 2;
+		background-color: #fff;
+		> input {
+			transition: .3s;
+			outline: 0;
+			height: 30px;
+			width: 30px;
+			margin: 10px 14px;
+			border: 1px solid #ccc;
+			text-align: center;
+			border-radius: 100%;
+			display: inline-block;
+			padding: 0;
+			text-indent: 0;
+			color: rgba(0,0,0,.75);
+			&:focus {
+				border-radius: 0;
+				border-color: rgba(39,91,255,.6);
+				box-shadow: 0 1px 5px rgba(27, 91, 255, 0.3), 1px 0 5px rgba(27, 91, 255, 0.3), 0 -1px 5px rgba(27, 91, 255, 0.3);
+				width: 60px;
+			}
+		}
+	}
+}

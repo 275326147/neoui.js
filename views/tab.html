@@ -1,0 +1,252 @@
+
+<link rel="stylesheet" href="/css/pages/tab.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="peek">
+    <li data-anchor="example" class="item active">Example</li>
+    <li class="item">API
+        <ul>
+            <li data-anchor="html" class="item">Html</li>
+            <li data-anchor="constructor" class="item">Constructor</li>
+            <li data-anchor="options" class="item">Options</li>
+            <li data-anchor="method" class="item">Method</li>
+        </ul>
+    </li>
+</ul>
+
+<section id="tab">
+
+    <header data-anchor="example">Example</header>
+
+    <section>
+
+        <div class="wrap">
+                <div class="ui tab" style="min-height: 300px;">
+                        <div class="nav">
+                                <div class="item selected" data-index="github">Github</div>
+                                <div class="item selected" data-index="dribbble">Dribbble</div>
+                                <div class="item selected" data-index="twitter">Twitter</div>
+                        </div>
+                        <div class="content">
+                                <section class="item selected" data-index="github">
+                                        <p>
+                                        GitHub is a Git repository web-based hosting service which offers all of the functionality of Git as well as adding many of its own features. Unlike Git which is strictly a command-line tool, Github provides a web-based graphical interface and desktop as well as mobile integration. It also provides access control and several collaboration features such as wikis, task management, and bug tracking and feature requests for every project.
+                                        </p>
+                                        <p>
+                                        GitHub offers both paid plans for private repositories, and free accounts, which are usually used to host open source software projects. As of 2014, Github reports having over 3.4 million users, making it the largest code host in the world.
+                                        </p>
+                                        <p>
+                                        GitHub has become such a staple amongst the open-source development community that many developers have begun considering it a replacement for a conventional resume and some employers require applications to provide a link to and have an active contributing GitHub account in order to qualify for a job.
+                                        </p>
+                                </section>
+                                <section class="item" data-index="dribbble">
+                                        <p>
+                                        Dribbble is a community of designers answering that question each day. Web designers, graphic designers, illustrators, icon artists, typographers, logo designers, and other creative types share small screenshots (shots) that show their work, process, and current projects.
+                                        </p>
+                                        <p>
+                                        Dribbble is a place to show and tell, promote, discover, and explore design.
+                                        </p>
+                                        <p>
+                                        Dribbble began as a side project and is now a tiny, bootstrapped and profitable company helping the world's design talent share their creations and get hired. Dribbble has become a go-to resource for discovering and connecting with designers around the globe.
+                                        </p>
+                                </section>
+                                <section class="item" data-index="twitter">
+                                        <p>
+                                        Twitter is an online social networking and microblogging service that enables users to send and read short 140-character text messages, called "tweets".
+                                        </p>
+                                        <p>
+                                        Registered users can read and post tweets, but unregistered users can only read them. Users access Twitter through the website interface, SMS, or mobile device app. Twitter Inc. is based in San Francisco and has offices in New York City, Boston, Austin and Detroit.
+                                        </p>
+                                </section>
+                        </div>
+                        <div class="hint"></div>
+                </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+
+    <header>API</header>
+
+    <div class="markdown">
+        <section>
+            <div class="ui ribbon" data-anchor="html">
+                <span>HTML</span>
+            </div>
+
+            <xmp>
+                <div class="ui tab" style="min-height: 300px;">
+                        <div class="nav">
+                                <div class="item selected" data-index="github">Github</div>
+                                <div class="item selected" data-index="dribbble">Dribbble</div>
+                                <div class="item selected" data-index="twitter">Twitter</div>
+                        </div>
+
+                        <div class="content">
+                                <section data-index="github"></section>
+                                <section data-index="dribbble"></section>
+                                <section data-index="twitter"></section>
+                        </div>
+                </div>
+            </xmp>
+            <blockquote>
+                    <p><code>Ajax</code>页面的加载, 添加<code>data-page="url"</code>属性</p>
+            <blockquote>
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="constructor">
+                <span>Constructor</span>
+            </div>
+
+            <p><code>$( selector ).tab( options )</code>
+            </p>
+
+            <blockquote>
+                <p><code>selector</code> - 选择器或 DOM 元素</p>
+
+                <p><code>options</code> - 参数设置</p>
+            </blockquote>
+
+            <xmp>
+            $( ".ui.tab" ).tab( { duration: 500 } );
+            </xmp>
+
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="options">
+                <span>Options</span>
+            </div>
+
+            <blockquote>
+                <p><code>rule</code> - <code>"data-index"</code></p>
+            </blockquote>
+            <p>页签和内容映射</p>
+            <br>
+
+            <blockquote>
+            <p><code>class4loading</code> - <code>"loading"</code></p>
+            </blockquote>
+            <p><code>Ajax</code>加载内容时作用于页签</p>
+            <br>
+
+            <blockquote>
+                <p><code>class4error</code> - <code>"error"</code>
+                </p>
+            </blockquote>
+            <p><code>Ajax</code>加载失败时作用于页签</p>
+            <br>
+
+            <blockquote>
+                <p><code>ripple</code> - <code>true</code>
+                </p>
+            </blockquote>
+            <p>页签点击大波浪</p>
+            <br>
+
+            <blockquote>
+                <p><code>duration</code> - <code>300</code>
+                </p>
+            </blockquote>
+            <p>动画时间, 单位毫秒</p>
+            <br>
+
+            <blockquote>
+                <p><code>onSelect</code> - <code>null</code>
+                </p>
+            </blockquote>
+            <p>取值为<code>function</code>时, 页签选择时执行该方法, 取值为<code>Hash</code>对象时, 通过<code>data-index</code>执行对应回调</p>
+            <xmp>
+            $( ".ui.tab" ).tab( {
+                onSelect: {
+                        
+                    "github": function( tab, settings ) {
+                        console.log( "Github" );
+                    },
+
+                    "dribbble": function( tab, settings ) {
+                        console.log( "Dribbble" );
+                    }
+                }
+            } );
+            </xmp>
+        </section>
+
+        <section>
+            <div class="ui ribbon" data-anchor="method">
+                <span>Method</span>
+            </div>
+
+            <p><code>tab.add( items )</code>
+            </p>
+
+            <blockquote>
+                <p><code>items</code> - Object/Array</p>
+            </blockquote>
+            <p>新增一个或多个<code>tab</code></p>
+            <xmp>
+            {
+                name - 新增页签显示, 取值不限, 可以为 HTML 
+                index - 页签索引值
+                render - 内容渲染, 返回内容
+                immediate - 是否立即加载内容, 默认 false
+            }
+            </xmp>
+            <br>
+
+            <p><code>tab.remove( index )</code>
+            </p>
+            <blockquote>
+                <p><code>index</code> - String</p>
+            </blockquote>
+            <p>移除指定<code>tab</code></p>
+            <br>
+
+            <p><code>tab.getTab( index )</code> 
+            </p>
+            <blockquote>
+                <p><code>index</code> - String</p>
+            </blockquote>
+            <p>获取指定<code>tab</code>的DOM</p>
+            <br>
+
+            <p><code>tab.active( index )</code>
+            </p>
+            <blockquote>
+                <p><code>index</code> - String</p>
+            </blockquote>
+            <p>选中对应<code>tab</code></p>
+            <br>
+
+            <p><code>tab.isActive( index )</code>
+            </p>
+            <blockquote>
+                <p><code>index</code> - String</p>
+            </blockquote>
+            <p>判断对应<code>tab</code>是否被选中</p>
+            <br>
+
+            <p><code>tab.disabled( [index] )</code>
+            </p>
+            <blockquote>
+                <p><code>index</code> - String/Array</p>
+            </blockquote>
+            <p>禁用<code>tab</code>, 参数空时禁用所有<code>tab</code></p>
+            <br>
+
+            <p><code>tab.enabled( [index] )</code>
+            </p>
+            <blockquote>
+                <p><code>index</code> - String/Array</p>
+            </blockquote>
+            <p>取消禁用, 参数空时取消所有已禁用<code>tab</code></p>
+        </section>
+    </div>
+</section>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/tab"], function(page) {
+    page($("#tab"));
+});
+</script>

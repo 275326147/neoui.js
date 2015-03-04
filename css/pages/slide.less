@@ -1,0 +1,21 @@
+
+@import (less) "wikiTemplate.less";
+@import (less) "markdown.less";
+@import (less) "../component/slide.less";
+
+#slide {
+	#wikiTemplate();
+	
+	.markdown {
+	
+                #markdown();
+	}
+
+        .ui.slide h1 {
+                
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+        }
+}
+
+

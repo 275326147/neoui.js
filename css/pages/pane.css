@@ -1,0 +1,501 @@
+.ui.pane {
+  overflow: hidden;
+  position: relative;
+}
+.ui.pane .title {
+  line-height: 32px;
+  height: 32px;
+  background: #ddd;
+  padding: 0 20px;
+  transition: .2s;
+  font-size: .9rem !important;
+  font-family: "Roboto", Sans-serif !important;
+  margin-bottom: 0 !important;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  border: 1px solid #c4c4c4;
+  position: relative;
+  z-index: 1;
+}
+.ui.pane .title:hover {
+  background-color: #d0d0d0;
+}
+.ui.pane .title:before {
+  font-family: "icomoon";
+  position: absolute;
+  content: "\e61d";
+  right: 10px;
+  top: 0px;
+  font-size: 20px;
+}
+.ui.pane .content {
+  transition: .2s;
+  padding: 20px !important;
+  color: rgba(0, 0, 0, 0.75) !important;
+  border: 1px solid #ddd;
+}
+.ui.pane .left {
+  transition: .1s;
+}
+.ui.pane .right {
+  transition: .3s;
+  position: absolute;
+  right: 0;
+  top: 2;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.ui.pane.open .left {
+  transition: .3s;
+}
+.ui.pane.open .right {
+  transition: .1s;
+}
+.ui.pane.open .title:before {
+  content: "\e61c";
+}
+#pane {
+  padding-left: 340px;
+  padding-bottom: 100px;
+  font-family: "Roboto", Sans-serif;
+  font-size: 0.85rem;
+}
+#pane header {
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', Roboto, Arial, Sans-serif;
+  font-weight: 100;
+  font-size: 3.5rem;
+  color: #656d78;
+  text-align: left;
+  margin-bottom: 20px;
+}
+#pane section {
+  padding: 20px 0 5px 20px;
+  border-left: 1px solid #ddd;
+  margin-bottom: 30px;
+  position: relative;
+  width: 900px;
+}
+#pane section > div.view-code {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+  padding: 9px 18px 0 0;
+}
+#pane section > div.view-code:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+#pane section > div.view-code .icon {
+  font-size: 20px;
+}
+#pane section .circle {
+  height: 38px;
+  width: 38px;
+  line-height: 38px;
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  text-align: center;
+}
+#pane section .circle .icon {
+  font-size: 20px;
+}
+#pane section .circle .icon.play {
+  color: #13cc72;
+}
+#pane section .circle .icon.play:hover {
+  color: #0f9d58;
+}
+#pane section .circle .icon.stop {
+  color: #f77066;
+}
+#pane section .circle .icon.stop:hover {
+  color: #f44336;
+}
+#pane h1 {
+  font-family: "Roboto", Sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+}
+#pane code,
+#pane xmp,
+#pane .note {
+  display: block;
+  font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+}
+#pane .note {
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 48px;
+  height: 48px;
+}
+#pane code,
+#pane xmp {
+  -webkit-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+}
+#pane xmp {
+  padding-right: 20px;
+}
+#pane .markdown {
+  display: block;
+  font-family: Georgia, "Times New Roman", "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", serif;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+#pane .markdown p {
+  height: auto;
+  line-height: 28px;
+}
+#pane .markdown #intro p {
+  line-height: 32px;
+  text-indent: 0;
+}
+#pane .markdown h3 {
+  color: rgba(0, 0, 0, 0.8);
+  margin: 20px 0;
+}
+#pane .markdown a {
+  color: #4183C4;
+}
+#pane .markdown a.absent {
+  color: #cc0000;
+}
+#pane .markdown a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+#pane .markdown h1,
+#pane .markdown h2,
+#pane .markdown h3,
+#pane .markdown h4,
+#pane .markdown h5,
+#pane .markdown h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+#pane .markdown h1 tt,
+#pane .markdown h1 code {
+  font-size: inherit;
+}
+#pane .markdown h2 tt,
+#pane .markdown h2 code {
+  font-size: inherit;
+}
+#pane .markdown h3 tt,
+#pane .markdown h3 code {
+  font-size: inherit;
+}
+#pane .markdown h4 tt,
+#pane .markdown h4 code {
+  font-size: inherit;
+}
+#pane .markdown h5 tt,
+#pane .markdown h5 code {
+  font-size: inherit;
+}
+#pane .markdown h6 tt,
+#pane .markdown h6 code {
+  font-size: inherit;
+}
+#pane .markdown h1 {
+  font-size: 28px;
+  color: black;
+}
+#pane .markdown h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black;
+}
+#pane .markdown h3 {
+  font-size: 18px;
+}
+#pane .markdown h4 {
+  font-size: 16px;
+}
+#pane .markdown h5 {
+  font-size: 14px;
+}
+#pane .markdown h6 {
+  color: #777777;
+  font-size: 14px;
+}
+#pane .markdown p,
+#pane .markdown blockquote,
+#pane .markdown ul,
+#pane .markdown ol,
+#pane .markdown dl,
+#pane .markdown li,
+#pane .markdown table,
+#pane .markdown pre {
+  margin: 15px 0;
+}
+#pane .markdown hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+#pane .markdown body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#pane .markdown body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#pane .markdown body > h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#pane .markdown dy > h3:first-child,
+#pane .markdown body > h4:first-child,
+#pane .markdown body > h5:first-child,
+#pane .markdown body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#pane .markdown a:first-child h1,
+#pane .markdown a:first-child h2,
+#pane .markdown a:first-child h3,
+#pane .markdown a:first-child h4,
+#pane .markdown a:first-child h5,
+#pane .markdown a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#pane .markdown h1 p,
+#pane .markdown h2 p,
+#pane .markdown h3 p,
+#pane .markdown h4 p,
+#pane .markdown h5 p,
+#pane .markdown h6 p {
+  margin-top: 0;
+}
+#pane .markdown li p.first {
+  display: inline-block;
+}
+#pane .markdown ul,
+#pane .markdown ol {
+  padding-left: 30px;
+}
+#pane .markdown ol#footnotes {
+  padding-top: 15px;
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+}
+#pane .markdown ul :first-child,
+#pane .markdown ol :first-child {
+  margin-top: 0;
+}
+#pane .markdown ul :last-child,
+#pane .markdown ol :last-child {
+  margin-bottom: 0;
+}
+#pane .markdown dl {
+  padding: 0;
+}
+#pane .markdown dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+#pane .markdown dl dt:first-child {
+  padding: 0;
+}
+#pane .markdown dl dt > :first-child {
+  margin-top: 0;
+}
+#pane .markdown dl dt > :last-child {
+  margin-bottom: 0;
+}
+#pane .markdown dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+#pane .markdown dl dd > :first-child {
+  margin-top: 0;
+}
+#pane .markdown dl dd > :last-child {
+  margin-bottom: 0;
+}
+#pane .markdown blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+#pane .markdown blockquote > :first-child {
+  margin-top: 0;
+}
+#pane .markdown blockquote > :last-child {
+  margin-bottom: 0;
+}
+#pane .markdown table {
+  padding: 0;
+}
+#pane .markdown table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+#pane .markdown table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+#pane .markdown table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+#pane .markdown table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+#pane .markdown table tr th :first-child,
+#pane .markdown table tr td :first-child {
+  margin-top: 0;
+}
+#pane .markdown table tr th :last-child,
+#pane .markdown table tr td :last-child {
+  margin-bottom: 0;
+}
+#pane .markdown img {
+  max-width: 100%;
+}
+#pane .markdown span.frame {
+  display: block;
+  overflow: hidden;
+}
+#pane .markdown span.frame > span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
+#pane .markdown span.frame span img {
+  display: block;
+  float: left;
+}
+#pane .markdown span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
+#pane .markdown span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+#pane .markdown span.align-center > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
+#pane .markdown span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+#pane .markdown span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+#pane .markdown span.align-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
+#pane .markdown span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+#pane .markdown span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left;
+}
+#pane .markdown span.float-left span {
+  margin: 13px 0 0;
+}
+#pane .markdown span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right;
+}
+#pane .markdown span.float-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
+#pane .markdown code,
+#pane .markdown tt {
+  margin: 0 2px;
+  padding: 5px 10px;
+  display: inline;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: none;
+}
+#pane .markdown pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+#pane .markdown .highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+#pane .markdown pre {
+  background-color: #f8f8f8;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+}
+#pane .markdown pre code,
+#pane .markdown pre tt {
+  background-color: transparent;
+  border: none;
+}
+#pane .markdown xmp {
+  overflow: auto;
+}

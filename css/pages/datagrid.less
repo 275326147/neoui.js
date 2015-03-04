@@ -1,0 +1,38 @@
+
+@import (less) "wikiTemplate.less";
+@import (less) "markdown.less";
+
+#peek {
+        top: 130px;
+}
+
+#datagrid {
+        #wikiTemplate();
+
+        img.preview {
+                width: 300px;
+                height: 200px;
+                margin: 20px;
+                -webkit-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+                -moz-box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+                box-shadow: 0 1px 24px rgba(0, 0, 0, 0.24);
+                cursor: pointer;
+                outline: 0;
+        }
+
+        img.avatar {
+                width: 24px;
+                height: 24px;
+                border-radius: 20px;
+                vertical-align: -7px;
+                margin-right: 10px;
+        }
+
+        .slick-cell.center {
+                text-align: center;
+        }
+
+        .markdown {
+                #markdown();
+        }
+}

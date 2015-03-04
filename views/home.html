@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/css/pages/home.css" type="text/css" media="screen" charset="utf-8">
+
+<ul id="home" class="pages">
+    <li class="page show transition background" name="home">
+
+        <div class="wrap">
+            <div id="logo" class="transition fade out slide">
+                neoui.js
+            </div>
+            <p id="intro" class="transition fade out">
+                We build simple, easy to use website.
+            </p>
+
+            <div id="social">
+
+                <a href="#" class="transition animate slide left">
+                    <i class="icon twitter"></i>
+                </a>
+
+                <a href="//www.github.com/trazyn" class="transition animate slide right">
+                    <i class="icon github2"></i>
+                </a>
+
+                <a href="mailto:tn.razy@gmail.com" class="transition animate slide left">
+                    <i class="icon mail"></i>
+                </a>
+            </div>
+
+            <div id="avatars" class="transition slide">
+	    <a class="tooltip top" data-tooltip="TianZe"><img src="https://avatars3.githubusercontent.com/u/1774898" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="GuoJiPing"><img src="/images/avatar.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="ZhouMeiLing"><img src="/images/avatar2.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="ZhouRuiWen"><img src="/images/avatar.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="ShuQian"><img src="/images/avatar2.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="LiJiaHong"><img src="/images/avatar.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    <a class="tooltip top" data-tooltip="HeChangYan"><img src="/images/avatar.jpg" class="avatar transition fade" onload="this.classList.remove(&quot;out&quot;)"></a>
+	    </div>
+
+        </div>
+        <div id="action">
+            <button name="github" class="ui button outline coral transition">Github</button>
+            <button name="demo" class="ui button outline coral transition">Demo</button>
+        </div>
+        <a id="next" class="transition animate more"><i class="icon arrow down transition"></i></a>
+    </li>
+
+    <li class="page background night" name="clock">
+        <h1 class="release">Next Release Countdown</h1>
+
+        <div id="clock">
+
+        </div>
+
+        <button name="history" class="ui button primary transition">View The History</button>
+
+        <a id="prev" class="transition animate more"><i class="icon arrow up transition"></i></a>
+    </li>
+</ul>
+
+<script type="text/javascript" charset="utf-8">
+require(["views/home"], function(page) {
+    page($("#home"));
+});
+</script>
