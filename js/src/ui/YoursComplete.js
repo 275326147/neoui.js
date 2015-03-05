@@ -47,7 +47,7 @@
 			self.stopSuggest();
 
 			if ( window.event ) {
-				keyCode = event.keyCode;
+				keyCode = window.event.keyCode;
 			}
 
 			if ( settings.delimiter && 
@@ -109,11 +109,9 @@
 					  .addClass( "show" );
 				  };
 
-				if ( currentValue === query ) { return; }
-
 				query = currentValue;
 				
-				if ( query && query.length >= settings.minChars ) {
+				if ( query.length >= settings.minChars ) {
 					
 					if ( !force ) {
 					
@@ -170,7 +168,7 @@
 
 			var prefix = fg.value.indexOf( "," ) !== -1 ? fg.value.replace( /\,[^,]+$/, " " ) : "";
 
-			return bg.value = prefix + data[ 0 ][ settings.textKey ][ "replace" ]( new RegExp( "^" + query, "i" ), query );
+			return query && (bg.value = prefix + data[ 0 ][ settings.textKey ][ "replace" ]( new RegExp( "^" + query, "i" ), query ));
 		}
 
 		function setfg( value ) {
@@ -188,17 +186,21 @@
 			  value = ele.data( "data-value" ),
 			  index = fg.value.toLowerCase().split( settings.delimiter ).indexOf( item[ settings.textKey ][ "toLowerCase" ]() );
 
-			query = item[ settings.textKey ];
+			if ( index !== -1 ) {
+			
+				query = item[ settings.textKey ];
 
-			bg.value = fg.value = fg.value.replace( new RegExp( query, "i" ), query );
+				bg.value = fg.value = fg.value.replace( new RegExp( query, "i" ), query );
 
-			/** Remove other suggestion */
-			data = [ item ];
+				/** Remove other suggestion */
+				data = [ item ];
 
-			value = value instanceof Array ? value : [];
-			value.length = fg.value.split( settings.delimiter ).length;
-			value[ index ] = item;
-			ele.data( "data-value", value );
+				value = value instanceof Array ? value : [];
+				value.length = fg.value.split( settings.delimiter ).length;
+				value[ index ] = item;
+				ele.data( "data-value", value );
+			} else 
+				value = [];
 
 			if ( multiple || multiple === undefined ) {
 			
@@ -267,7 +269,7 @@
 			}
 		}
 
-		(fg = ele.find( settings.selector4input ).css( "background", "none" ), bg = fg.next(), fg)
+		(fg = ele.find( settings.selector4input ), bg = fg.next(), fg)
 
 			/** Prevent default event */
 			.attr( "autocomplete", "off" )
@@ -364,18 +366,26 @@
 
 				ele.removeData( "data-value" );
 
-				for ( var i = 0, length = values.length; suggestion && i < length; ++i ) {
+				if ( values.length ) {
 					
-					var value = values[ i ];
-
-					if ( value && cache[ value.toLowerCase() ] && cache[ value.toLowerCase() ].length === 1 ) {
+					if ( suggestion ) {
 					
-						select( cache[ value.toLowerCase() ][ 0 ], i === length - 1 );
-					} else if ( settings.inputAnything === false ) {
-						indicator.addClass( settings.class4error );
-					}
-				}
+						for ( var i = 0, length = values.length; suggestion && i < length; ++i ) {
+							
+							var value = values[ i ];
 
+							if ( value && cache[ value.toLowerCase() ] && cache[ value.toLowerCase() ].length === 1 ) {
+							
+								select( cache[ value.toLowerCase() ][ 0 ], i === length - 1 );
+							} else if ( settings.inputAnything === false ) {
+								indicator.addClass( settings.class4error );
+							}
+						}
+					} else indicator.addClass( settings.class4error );
+				} else
+				/** Reset the user data */
+				settings.set instanceof Function && settings.set.call( ele, [], settings );
+				
 				query = "";
 				finishSuggest();
 			} )
@@ -390,7 +400,17 @@
 			fg = fg[ 0 ];
 			bg = bg[ 0 ];
 
-			indicator = self.$node.find( settings.selector4indicator );
+			indicator = self
+				.$node
+				.find( settings.selector4indicator )
+				.on( "click", function( e ) {
+					
+					/** Clear the input value */
+					if ( indicator.hasClass( settings.class4error ) ) {
+						$( fg ).val( bg.value = "" ).trigger( "focusout" );
+						indicator.removeClass( "error" );
+					}
+				} );
 
 			self.list
 				.delegate( "li", "click", function( e ) {

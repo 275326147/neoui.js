@@ -1,5 +1,5 @@
 
-define( function() {
+define( [ "ui/YoursComplete" ], function() {
 
 	"use strict";
 
@@ -22,19 +22,68 @@ define( function() {
 
 	return function( $G, fastQuery ) {
 	
-		var dataView = $G.getData()
-		
-		, bar = $( $G.getHeaderRow() )
-
-		, options = $G.getOptions()
-
-		, filters = {};
+		var 
+		dataView = $G.getData(),
+		bar = $( $G.getHeaderRow() ),
+		options = $G.getOptions(),
+		filters = {};
 	
 		$G.onHeaderRowCellRendered.subscribe( function( e, args ) {
+
+			var column = args.column;
 		
 			if ( args.column.filter ) {
-				$( args.node ).html( "<input type='text' data-column-field='" + args.column.field + "' placeholder='Search for...' >" );
-			} else if ( args.column.id === "_checkbox_selector" ) {
+
+				switch ( column.filter ) {
+					
+					case "autoComplete":
+						$( args.node ).html( "<div class='ui yoursComplete'" +
+							"<input class='ui text front' data-column-field='" + column.field + "' placeholder='Search for...' />" +
+							"<input cass='ui text hint' tabindex='-1' />" +
+							"<i class='icon arrow down'></i>" +
+							"</div>" )
+							.yoursComplete( $.extend( {}, {
+								minChars: 0,
+								inputAnything: false,
+								set: function( items, settings ) {
+									
+									var values = [];
+
+									for ( var i = 0, length = items.length; i < length;
+										values.push( items[i++][ settings.valueKey ] ) );
+
+									this
+									.find( settings.selector4input )
+									.attr( "data-value", value.join() )
+									.trigger( "change" );
+								}
+							} ) );
+						break;
+
+					case "select":
+						var
+						html = "",
+					     	options = column.filterOptions,
+					     	items = options.items,
+					     	node = $( args.node ).html( "<label class='ui select'><select data-column-field='" + column.field + "'></select></label>" );
+
+					     	for ( var i = 0, length = items.length; i < length; ++i ) {
+					     		
+					     		var
+					     		item = items[i],
+						     	value = item[ options.valueKey ],
+						     	text = item[ options.textKey ];
+
+						     	html += "<option value='" + (value || text) + "'>" + text + "</option>";
+					     	}
+
+					     	node.find( "select" ).html( html );
+						break;
+
+					default:
+						$( args.node ).html( "<input type='text' data-column-field='" + column.field + "' placeholder='Search for...' >" );
+				}
+			} else if ( column.id === "_checkbox_selector" ) {
 				$( args.node ).html( "<button class='icon slick-filter-clear' title='Clear the filter'></button>" );
 			}
 		} );
@@ -73,20 +122,20 @@ define( function() {
 
 		bar
 
-		.delegate( "input:visible", "keyup", function( e ) {
+		.delegate( "select, input:visible", "keyup change", function( e ) {
 			
-			var self = $( this )
-			, field = self.attr( "data-column-field" );
+			var 
+			self = $( this ),
+			field = self.attr( "data-column-field" );
 
 			if ( field ) {
 				
-				filters[ field ] = self.val().replace( /^\s+|\s+$/g, "" );
+				filters[ field ] = (self.attr( "data-value" ) || self.val()).replace( /^\s+|\s+$/g, "" );
 				dataView.refresh();
 
 				if ( (!fastQuery || fastQuery.is( ":checked" )) && 13 === e.keyCode ) {
 					
 					$G.search();
-
 					e.stopPropagation();
 				}
 			}

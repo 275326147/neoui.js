@@ -254,7 +254,7 @@ if (typeof Slick === "undefined") {
 
             $focusSink = $("<div tabIndex='0' hideFocus style='position:fixed;width:0;height:0;top:0;left:0;outline:0;'></div>").appendTo($container);
 
-            $headerRowScroller = $("<div class='slick-headerrow ui-state-default' style='overflow:hidden;position:relative;'>" +
+            $headerRowScroller = $("<div class='slick-headerrow ui-state-default' style='position:relative;'>" +
                     "<div class='slick-headerrow-columns-left' />" +
                     "<div class='slick-headerrow-columns-right' />" +
                     "</div>").appendTo($container).css("display", options.headerRowVisibility ? "" : "none")
@@ -267,9 +267,9 @@ if (typeof Slick === "undefined") {
                 $headerRowScroller.parent().hide();
             }
 
-            $headerScroller = $("<div class='slick-header ui-state-default' style='overflow:hidden;position:relative;'>" +
+            $headerScroller = $("<div class='slick-header ui-state-default' style='position:relative;'>" +
                     "<div class='slick-header-columns-left' style='position:absolute;top:0;left:0;' />" +
-                    "<div class='slick-header-columns-right' style='overflow:hidden;position:relative;' />" +
+                    "<div class='slick-header-columns-right' style='position:relative;' />" +
                     "</div>").appendTo($container)
                 .find(".slick-header-columns-right");
 
@@ -343,8 +343,6 @@ if (typeof Slick === "undefined") {
                     .bind("keydown", handleKeyDown);
                 $canvas.add($canvasL)
                     .bind("keydown", handleKeyDown)
-                    .bind("click", handleClick)
-                    .bind("dblclick", handleDblClick)
                     .bind("contextmenu", handleContextMenu)
                     .bind("draginit", handleDragInit)
                     .bind("dragstart", {
@@ -352,6 +350,8 @@ if (typeof Slick === "undefined") {
                     }, handleDragStart)
                     .bind("drag", handleDrag)
                     .bind("dragend", handleDragEnd)
+                    .delegate(".slick-cell", "click", handleClick)
+                    .delegate(".slick-cell", "dblclick", handleDblClick)
                     .delegate(".slick-cell", "mouseenter", handleMouseEnter)
                     .delegate(".slick-cell", "mouseleave", handleMouseLeave);
 

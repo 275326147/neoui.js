@@ -118,7 +118,7 @@ define( [ "slick/paging/Paging",
 					.delegate( "button[name=ok]", "click", function() {
 					
 						var
-						data = settings.multiple ? $G.getSelectedRowsData() : [ $G.getRadioRow() ],
+						data = settings.multiple ? $G.getSelectedRowsData() : $G.getRadioRow(),
 						callback = settings.onOk;
 
 						if ( typeof callback === "function" 

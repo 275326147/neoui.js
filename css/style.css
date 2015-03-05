@@ -1781,6 +1781,9 @@
   border-left: 0px;
   font-weight: 300;
 }
+.ui.slickgrid .slick-cell {
+  overflow: hidden;
+}
 .ui.slickgrid .slick-cell label.custom-select,
 .ui.slickgrid .slick-cell select {
   width: 100%;
@@ -1882,11 +1885,9 @@
 .ui.slickgrid .slick-cell,
 .ui.slickgrid .slick-headerrow-column {
   position: absolute;
-  overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   vertical-align: middle;
-  z-index: 1;
   margin: 0;
   white-space: nowrap;
   cursor: default;
@@ -1911,7 +1912,6 @@
   position: relative;
   white-space: nowrap;
   cursor: default;
-  overflow: hidden;
 }
 .ui.slickgrid .slick-headerrow-columns {
   background: #eaeaea;
@@ -1941,13 +1941,11 @@
   background-color: #E7E7E7;
 }
 .ui.slickgrid .slick-headerrow-columns-right {
-  overflow: hidden;
   background-color: #EAEAEA;
 }
 .ui.slickgrid .slick-header-column.ui-state-default {
   position: relative;
   display: inline-block;
-  overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   line-height: 33px;
@@ -1968,6 +1966,23 @@
 .ui.slickgrid .slick-headerrow-column {
   text-indent: 0;
 }
+.ui.slickgrid .slick-headerrow-column .ui.yoursComplete {
+  width: auto;
+}
+.ui.slickgrid .slick-headerrow-column .ui.yoursComplete .front {
+  z-index: 1;
+}
+.ui.slickgrid .slick-headerrow-column .ui.yoursComplete .icon.arrow.down {
+  margin-top: -17px;
+  right: 7px;
+}
+.ui.slickgrid .slick-headerrow-column .ui.select select {
+  width: 100%;
+}
+.ui.slickgrid .slick-headerrow-column .ui.select:after {
+  top: 16px;
+  right: 10px;
+}
 .ui.slickgrid .slick-sort-indicator {
   position: absolute;
   font-size: 20px;
@@ -1975,7 +1990,6 @@
   color: #555;
   display: block;
   right: 4px;
-  z-index: 1;
 }
 .ui.slickgrid .slick-sort-indicator.up {
   top: 0px;

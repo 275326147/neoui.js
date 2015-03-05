@@ -55,7 +55,19 @@ define( [ "slick/editors/Text",
                         id: "enable_flag",
                         name: "Enable Flag",
                         field: "enable_flag",
-                        filter: true,
+                        filter: "select",
+                        filterOptions: {
+                        	items: [ {
+                        		text: "Yes",
+                        		value: "Y"
+                        	}, {
+                        		text: "No",
+                        		value: "N"
+                        	} ],
+
+				textKey: "text",
+				valueKey: "value"
+                        },
                         width: 107,
                         editor: Select,
                         editorArgs: { items: [ { value: "N", label: "No" }, { value: "Y", label: "Yes" } ] },

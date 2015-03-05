@@ -133,17 +133,19 @@ define( function() {
 				editor.isActive( $G.getEditController() ) && editor.commitCurrentEdit();
 				
 				/** Don't interrupt 'dblclick' */
-                                if ( current.row !== cell.row 
-                                                || $G.getDataItem( cell.row ) != $G.getData().getItems()[ current.row ] ) {
-                                
-                                        $G.invalidateRow( current.row );
 
-                                        sync( current = {
-                                                
-                                                row: cell.row,
-                                                id: $G.getDataItem( cell.row )[ dataView.getIdProperty() ]
-                                        } );
-                                }
+				if ( settings.duplicate !== true ) {
+					if ( current.row !== cell.row ) {
+					
+						$G.invalidateRow( current.row );
+
+						sync( current = {
+							
+							row: cell.row,
+							id: $G.getDataItem( cell.row )[ dataView.getIdProperty() ]
+						} );
+					}
+				}
                                 $G.onRadioRow.notify( cell );
 			}
 		}
