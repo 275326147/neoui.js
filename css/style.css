@@ -2552,7 +2552,6 @@
   left: 0 !important;
   background: #FFF !important;
   padding: 5px 5px 20px !important;
-  transition: width .2s linear, height .2s linear !important;
   z-index: 10 !important;
   box-sizing: border-box !important;
 }
