@@ -37,11 +37,12 @@ define( [ "ui/YoursComplete" ], function() {
 				switch ( column.filter ) {
 					
 					case "autoComplete":
-						$( args.node ).html( "<div class='ui yoursComplete'" +
-							"<input class='ui text front' data-column-field='" + column.field + "' placeholder='Search for...' />" +
-							"<input cass='ui text hint' tabindex='-1' />" +
+						$( args.node ).html( "<div class='ui yoursComplete'>" +
+							"<input type='text' data-column-field='" + column.field + "' placeholder='Search for...' />" +
+							"<input type='text' tabindex='-1' />" +
 							"<i class='icon arrow down'></i>" +
 							"</div>" )
+							.find( ".ui.yoursComplete" )
 							.yoursComplete( $.extend( {}, {
 								minChars: 0,
 								inputAnything: false,
@@ -54,10 +55,10 @@ define( [ "ui/YoursComplete" ], function() {
 
 									this
 									.find( settings.selector4input )
-									.attr( "data-value", value.join() )
+									.attr( "data-value", values.join() )
 									.trigger( "change" );
 								}
-							} ) );
+							}, column.filterOptions ) );
 						break;
 
 					case "select":

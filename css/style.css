@@ -1777,7 +1777,6 @@
   background: #eee;
 }
 .ui.slickgrid .ui-state-default {
-  overflow: hidden;
   border-left: 0px;
   font-weight: 300;
 }
@@ -1888,6 +1887,7 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   vertical-align: middle;
+  z-index: 1;
   margin: 0;
   white-space: nowrap;
   cursor: default;
@@ -1912,6 +1912,7 @@
   position: relative;
   white-space: nowrap;
   cursor: default;
+  overflow: hidden;
 }
 .ui.slickgrid .slick-headerrow-columns {
   background: #eaeaea;
@@ -1937,10 +1938,11 @@
   background-color: #E7E7E7;
 }
 .ui.slickgrid .slick-header-columns-left {
-  z-index: 2;
+  z-index: 1;
   background-color: #E7E7E7;
 }
 .ui.slickgrid .slick-headerrow-columns-right {
+  overflow: hidden;
   background-color: #EAEAEA;
 }
 .ui.slickgrid .slick-header-column.ui-state-default {
@@ -1990,6 +1992,7 @@
   color: #555;
   display: block;
   right: 4px;
+  z-index: 1;
 }
 .ui.slickgrid .slick-sort-indicator.up {
   top: 0px;

@@ -612,8 +612,8 @@
 		class4highlight 	: "highlight",
 		class4list 		: "list",
 
-		selector4input 		: "input.front",
-		selector4indicator 	: "i.icon",
+		selector4input 		: "input:first",
+		selector4indicator 	: ".icon:first",
 
 		valueKey 		: "value",
 		textKey 		: "text",

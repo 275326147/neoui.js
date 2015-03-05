@@ -55,18 +55,20 @@ define( [ "slick/editors/Text",
                         id: "enable_flag",
                         name: "Enable Flag",
                         field: "enable_flag",
-                        filter: "select",
+                        filter: "autoComplete",
                         filterOptions: {
-                        	items: [ {
+                        	lookup: [ {
                         		text: "Yes",
                         		value: "Y"
                         	}, {
                         		text: "No",
                         		value: "N"
-                        	} ],
+                        	} ]
 
+				/**
 				textKey: "text",
 				valueKey: "value"
+				*/
                         },
                         width: 107,
                         editor: Select,

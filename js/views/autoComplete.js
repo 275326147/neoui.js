@@ -52,6 +52,7 @@ define( [ "ui/Peek", "ui/YoursComplete" ], function() {
 			.find( ".yoursComplete" )
 			.yoursComplete( { 
 				inputAnything: false,
+				minChars: 0,
 				lookup: lookup 
 			} );
 
