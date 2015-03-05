@@ -208,8 +208,8 @@ body {
         }
 
         .avatar {
-                height: 48px;
-                width: 48px;
+                height: 96px;
+                width: 96px;
                 margin-right: 10px;
                 border-radius: 100%;
                 cursor: pointer;
@@ -236,6 +236,40 @@ body {
                 font-size: 1rem;
                 height: 48px; 
                 line-height: 48px;
+        }
+
+        .info {
+        	float: right;
+
+        	p {
+        		cursor: pointer;
+        		text-indent: 32px;
+        		position: relative;
+        		transition: .2s;
+        		letter-spacing: 3px;
+        		background-color: #efefef;
+        		border-radius: 32px;
+			text-shadow: 0 0 40px #fff;
+        		font-size: 14px;
+        		line-height: 32px;
+        		padding: 0 14px;
+        		text-align: left;
+			line-height: 28px;
+			height: 28px;
+			margin-bottom: 4px;
+			&:hover {
+				background-color: @coral;
+			}
+        	}
+
+        	.icon {
+        		position: absolute;
+        		left: -12px;
+
+        		&:after {
+        			font-size: 18px;
+        		}
+        	}
         }
 
         .tooltip.top {
