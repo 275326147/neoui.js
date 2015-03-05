@@ -2,6 +2,16 @@
 # Neoui.js
 >模块化，高扩展性，组件齐全，接口一致，自主开发，适合多种应用场景
 
+### Install
+```
+npm install
+```
+
+
+### Build
+```
+grunt
+```
 
 ### Have a try
 ```
