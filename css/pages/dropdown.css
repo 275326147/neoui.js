@@ -16,6 +16,7 @@
   color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
+  outline: 0;
 }
 .ui.dropdown > .title:hover {
   background: #ea4c89;
