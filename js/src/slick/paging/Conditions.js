@@ -38,8 +38,8 @@ define( [ "ui/YoursComplete" ], function() {
 					
 					case "autoComplete":
 						$( args.node ).html( "<div class='ui yoursComplete'>" +
-							"<input type='text' data-column-field='" + column.field + "' placeholder='Search for...' />" +
-							"<input type='text' tabindex='-1' />" +
+							"<input type='text' class='front' data-column-field='" + column.field + "' placeholder='Search for...' />" +
+							"<input type='text' class='hint' tabindex='-1' />" +
 							"<i class='icon arrow down'></i>" +
 							"</div>" )
 							.find( ".ui.yoursComplete" )
