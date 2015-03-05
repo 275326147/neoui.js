@@ -21,8 +21,7 @@ $ python -m SimpleHTTPServer
 http://127.0.0.1:7000
 ```
 
->部分数据无法直接访问, 需 nginx 反向代理
->请使用 Chrome 浏览器, 暂时未做其他浏览器兼容
+>部分数据无法直接访问, 需 nginx 反向代理, 请使用 Chrome 浏览器, 暂时未做其他浏览器兼容
 
 ### TODO
 跨终端
