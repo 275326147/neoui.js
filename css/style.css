@@ -1916,6 +1916,9 @@
 .ui.slickgrid .slick-row .slick-radio-row {
   background: #EFF0D7;
 }
+.ui.slickgrid .slick-header-columns-right {
+  overflow: hidden;
+}
 .ui.slickgrid .slick-header-columns,
 .ui.slickgrid .slick-headerrow-columns {
   position: relative;
@@ -2001,7 +2004,6 @@
   color: #555;
   display: block;
   right: 4px;
-  z-index: 1;
 }
 .ui.slickgrid .slick-sort-indicator.up {
   top: 0px;

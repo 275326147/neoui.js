@@ -86,7 +86,7 @@
   opacity: 1;
 }
 .pages li.page[name='home'] #avatars {
-  margin-top: 16%;
+  margin-top: 18%;
 }
 .pages li.page[name='home'] #avatars .avatar {
   width: 64px;
@@ -161,7 +161,6 @@
   background-size: 100% 100%;
   background-position: 100% 100%;
   -webkit-background-clip: text;
-  background-image: -o-linear-gradient(transparent, transparent);
   width: 810px;
   text-align: center;
   line-height: 150px;
@@ -179,7 +178,6 @@
   position: absolute;
   left: 50%;
   margin-left: -90px;
-  width: 180px;
   top: 72%;
 }
 .pages li.page[name='clock'] button[name="history"]:hover {
