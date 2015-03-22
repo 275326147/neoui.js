@@ -89,7 +89,7 @@ define( [ "slick/editors/Text",
                         id: "last_update_date",
                         name: "Last Update Date",
                         field: "last_update_date",
-                        filter: true,
+                        filter: "calendar",
                         width: 123,
                         sortable: true
                 }, {
