@@ -1,5 +1,5 @@
 
-define( [ "ui/YoursComplete" ], function() {
+define( [ "ui/YoursComplete" , "ui/Calendar"], function() {
 
 	"use strict";
 
@@ -19,6 +19,63 @@ define( [ "ui/YoursComplete" ], function() {
 			remoteSortOrder: sortColumn.sortAsc ? "asc" : "desc"
 		};
 	};
+	
+	var autoComplete = function(e, args, column){
+		var node = $( args.node ).html( "<div class='ui yoursComplete'>" +
+							"<input type='text' class='front' data-column-field='" + column.field + "' placeholder='' />" +
+							"<input type='text' class='hint' tabindex='-1' />" +
+							"<i class='icon arrow down'></i>" +
+							"</div>" );
+
+		node.find( ".ui.yoursComplete" ).yoursComplete( $.extend( {}, {
+			minChars: 0,
+			inputAnything: false,
+			set: function( items, settings ) {
+				
+				var values = [];
+
+				for ( var i = 0, length = items.length; i < length;
+					values.push( items[i++][ settings.valueKey ] ) );
+
+				this
+				.find( settings.selector4input )
+				.attr( "data-value", values.join() )
+				.trigger( "change" );
+			}
+		}, column.filterOptions ) );
+	};
+	
+	var calendar = function(e, args, column){
+		/*
+		 + "<div style='width:100%;text-align:center;background:rgb(238, 238, 238);'>TO</div>" +
+							"<div class='ui calendar' style='width:100%;'><input class='ui text' type='text'><i class='icon calendar'></i></div>"
+		*/
+		$( args.node ).html( "<div class='ui calendar' style='width:100%;'>" +
+							"<input type='text' class='ui text' data-column-field='" + column.field + "' placeholder='' />" +
+							"<i class='icon calendar'></i>" +
+							"</div>")
+							.find( ".ui.calendar" ).calendar();
+	};
+	
+	var select = function(e, args, column){
+		var
+			html = "",
+			options = column.filterOptions,
+			items = options.items,
+			node = $( args.node ).html( "<label class='ui select'><select data-column-field='" + column.field + "'></select></label>" );
+
+			for ( var i = 0, length = items.length; i < length; ++i ) {
+				
+				var
+				item = items[i],
+				value = item[ options.valueKey ],
+				text = item[ options.textKey ];
+
+				html += "<option value='" + (value || text) + "'>" + text + "</option>";
+			}
+
+			node.find( "select" ).html( html );
+	};
 
 	return function( $G, fastQuery ) {
 	
@@ -37,56 +94,36 @@ define( [ "ui/YoursComplete" ], function() {
 				switch ( column.filter ) {
 					
 					case "autoComplete":
-						$( args.node ).html( "<div class='ui yoursComplete'>" +
-							"<input type='text' class='front' data-column-field='" + column.field + "' placeholder='Search for...' />" +
-							"<input type='text' class='hint' tabindex='-1' />" +
-							"<i class='icon arrow down'></i>" +
-							"</div>" )
-							.find( ".ui.yoursComplete" )
-							.yoursComplete( $.extend( {}, {
-								minChars: 0,
-								inputAnything: false,
-								set: function( items, settings ) {
-									
-									var values = [];
-
-									for ( var i = 0, length = items.length; i < length;
-										values.push( items[i++][ settings.valueKey ] ) );
-
-									this
-									.find( settings.selector4input )
-									.attr( "data-value", values.join() )
-									.trigger( "change" );
-								}
-							}, column.filterOptions ) );
+						autoComplete( e, args, column )
 						break;
-
+					
+					case "calendar":
+						calendar( e, args, column )
+						break;
+						
 					case "select":
-						var
-						html = "",
-					     	options = column.filterOptions,
-					     	items = options.items,
-					     	node = $( args.node ).html( "<label class='ui select'><select data-column-field='" + column.field + "'></select></label>" );
-
-					     	for ( var i = 0, length = items.length; i < length; ++i ) {
-					     		
-					     		var
-					     		item = items[i],
-						     	value = item[ options.valueKey ],
-						     	text = item[ options.textKey ];
-
-						     	html += "<option value='" + (value || text) + "'>" + text + "</option>";
-					     	}
-
-					     	node.find( "select" ).html( html );
+						select( e, args, column )
 						break;
 
 					default:
-						$( args.node ).html( "<input type='text' data-column-field='" + column.field + "' placeholder='Search for...' >" );
+						$( args.node ).html( "<input type='text' data-column-field='" + column.field + "' placeholder='' >" );
 				}
 			} else if ( column.id === "_checkbox_selector" ) {
 				$( args.node ).html( "<button class='icon slick-filter-clear' title='Clear the filter'></button>" );
 			}
+			
+										
+			$( args.node ).undelegate("focus").undelegate("focusout")
+				
+				.delegate("div,input,i","focus",function(e){
+					$( args.node ).parents().find(".slick-headerrow-columns").css("overflow","visible");
+					$( args.node ).parents().find(".slick-headerrow-columns-right").css("overflow","visible");
+				})
+				
+				.delegate("div,input,i","focusout",function(e){
+					$( args.node ).parents().find(".slick-headerrow-columns").css("overflow","hidden");
+					$( args.node ).parents().find(".slick-headerrow-columns-right").css("overflow","hidden");
+				});
 		} );
 
 		/** Set the filter */
@@ -168,24 +205,24 @@ define( [ "ui/YoursComplete" ], function() {
 	        
                         getConditions: function() {
                         
-				var criteria = [], value;
+								var criteria = [], value;
 
-				for ( var field in filters ) {
-					
-					(value = filters[ field ])
+								for ( var field in filters ) {
+									
+									(value = filters[ field ])
 
-						&& criteria.push( {
-							field: field,
-							operator: "like",
-							value: value
-						} );
-				}
+										&& criteria.push( {
+											field: field,
+											operator: "like",
+											value: value
+										} );
+								}
 
-				return {
-					pageVO: (!fastQuery || fastQuery.is( ":checked" )) ? getSort.call( $G ) : {},
+								return {
+									pageVO: (!fastQuery || fastQuery.is( ":checked" )) ? getSort.call( $G ) : {},
 
-					params: { criteria: JSON.stringify( criteria ) }
-				};
+									params: { criteria: JSON.stringify( criteria ) }
+								};
                         },
 
                         resetConditions: function() {
